@@ -67,7 +67,7 @@ return [
         'settings_title' => 'Configuraciones',
         'segments_title' => 'Segmentos',
         'families_title' => 'Familias',
-        'categories_title' => 'Categorías',
+        'categories_title' => 'Clases',
         'commodities_title' => 'Productos',
         'brands_title' => 'Marca',
 

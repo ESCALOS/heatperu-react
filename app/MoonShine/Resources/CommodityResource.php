@@ -11,6 +11,8 @@ use App\Models\Family;
 use GianTiaga\MoonshineFile\Fields\SpatieUppyFile;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Request;
+use MoonShine\ActionButtons\ActionButton;
 use MoonShine\Components\MoonShineComponent;
 use MoonShine\Fields\Field;
 use MoonShine\Fields\ID;
@@ -20,6 +22,8 @@ use MoonShine\Fields\Switcher;
 use MoonShine\Fields\Text;
 use MoonShine\Fields\TinyMce;
 use MoonShine\Handlers\ImportHandler;
+use MoonShine\MoonShineRequest;
+use MoonShine\MoonShineUI;
 use MoonShine\QueryTags\QueryTag;
 use MoonShine\Resources\ModelResource;
 
@@ -49,7 +53,7 @@ class CommodityResource extends ModelResource
         $resultFamilies = $families->mapWithKeys(fn ($family) => [$family->name => $family->categories->pluck('name', 'id')->toArray()])->toArray();
 
         return [
-            Select::make('Categoría', 'category_id')
+            Select::make('Clase', 'category_id')
                 ->options($resultFamilies)
                 ->nullable()
                 ->multiple(),
@@ -73,6 +77,10 @@ class CommodityResource extends ModelResource
             QueryTag::make(
                 'Sin stock',
                 fn (Builder $query) => $query->where('available', false)
+            ),
+            QueryTag::make(
+                'Eliminados',
+                fn (Builder $query) => $query->onlyTrashed()
             ),
         ];
     }
@@ -131,6 +139,13 @@ class CommodityResource extends ModelResource
         return ImportHandler::make('Importar')->queue();
     }
 
+    public function redirectAfterSave(): string
+    {
+        $referer = Request::header('referer');
+
+        return $referer ?: '/';
+    }
+
     /**
      * @return list<Field>
      */
@@ -144,12 +159,52 @@ class CommodityResource extends ModelResource
             Text::make('Modelo', 'model')->sortable(),
             Switcher::make('¿Disponible?', 'available')
                 ->updateOnPreview(),
-            BelongsTo::make('Categoría', 'category'),
+            BelongsTo::make('Clase', 'category'),
             SpatieUppyFile::make('Imágenes', 'commodities')
                 ->multiple()
                 ->countFiles(5)
                 ->image(),
         ];
+    }
+
+    protected function modifyDeleteButton(ActionButton $button): ActionButton
+    {
+        return $button->canSee(fn (Model $item) => ! $item->trashed());
+    }
+
+    protected function modifyDetailButton(ActionButton $button): ActionButton
+    {
+        return $button->canSee(fn (Model $item) => ! $item->trashed());
+    }
+
+    protected function modifyEditButton(ActionButton $button): ActionButton
+    {
+        return $button->canSee(fn (Model $item) => ! $item->trashed());
+    }
+
+    public function buttons(): array
+    {
+        return [
+            ActionButton::make('Restaurar', fn (): string => Request::header('referer') ?: '/')
+                ->method('restoreCommodity', params: fn (Model $item) => ['commodity_id' => $item->id])
+                ->canSee(fn (Model $item) => $item->trashed())
+                ->success()
+                ->icon('heroicons.arrow-uturn-left'),
+        ];
+    }
+
+    public function restoreCommodity(MoonShineRequest $request)
+    {
+        $id = $request->commodity_id;
+        $commodity = Commodity::onlyTrashed()->find($id);
+        if ($commodity) {
+            $commodity->restore();
+            MoonShineUI::toast('Restaurado', 'success');
+        } else {
+            MoonShineUI::toast('No se encontró el registro', 'error');
+        }
+
+        return redirect()->back();
     }
 
     /**
@@ -159,7 +214,7 @@ class CommodityResource extends ModelResource
     {
         return [
             ID::make()->sortable(),
-            BelongsTo::make('Categoría', 'category'),
+            BelongsTo::make('Clase', 'category'),
             BelongsTo::make('Marca', 'brand'),
             Text::make('SKU', 'sku')->sortable(),
             Text::make('Nombre', 'name')->sortable(),
@@ -182,7 +237,8 @@ class CommodityResource extends ModelResource
     {
         return [
             ID::make()->sortable(),
-            BelongsTo::make('Categoría', 'category'),
+            BelongsTo::make('Familia', 'category', fn ($item) => $item->family->name),
+            BelongsTo::make('Clase', 'category'),
             BelongsTo::make('Marca', 'brand'),
             Text::make('SKU', 'sku')->sortable(),
             Text::make('Nombre', 'name')->sortable(),

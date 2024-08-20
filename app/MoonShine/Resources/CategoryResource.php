@@ -23,7 +23,7 @@ class CategoryResource extends ModelResource
 {
     protected string $model = Category::class;
 
-    protected string $title = 'Categorías';
+    protected string $title = ' Clases';
 
     public string $column = 'name';
 
