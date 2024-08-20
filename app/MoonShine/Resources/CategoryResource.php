@@ -27,6 +27,8 @@ class CategoryResource extends ModelResource
 
     public string $column = 'name';
 
+    protected int $itemsPerPage = 10;
+
     protected array $with = ['family'];
 
     public function search(): array

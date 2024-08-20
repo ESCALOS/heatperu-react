@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('sku')->unique();
             $table->string('name');
             $table->foreignId('brand_id')->constrained();
-            $table->string('model');
+            $table->string('model')->nullable();
             $table->string('description')->nullable();
             $table->boolean('available');
             $table->timestamps();

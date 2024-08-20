@@ -11,7 +11,6 @@ use MoonShine\Components\MoonShineComponent;
 use MoonShine\Decorations\Block;
 use MoonShine\Fields\Field;
 use MoonShine\Fields\ID;
-use MoonShine\Fields\Relationships\BelongsTo;
 use MoonShine\Fields\Relationships\HasMany;
 use MoonShine\Fields\Text;
 use MoonShine\Resources\ModelResource;
@@ -27,11 +26,11 @@ class FamilyResource extends ModelResource
 
     public string $column = 'name';
 
-    protected array $with = ['segment'];
+    protected int $itemsPerPage = 10;
 
     public function search(): array
     {
-        return ['segment.name', 'name'];
+        return ['name'];
     }
 
     /**
@@ -43,7 +42,6 @@ class FamilyResource extends ModelResource
             Block::make([
                 ID::make()->sortable(),
                 Text::make('Nombre', 'name')->sortable(),
-                BelongsTo::make('Segmento', 'segment')->searchable(),
                 HasMany::make('Categoría', 'categories')
                     ->hideOnIndex()
                     ->hideOnUpdate()
@@ -63,8 +61,7 @@ class FamilyResource extends ModelResource
     public function rules(Model $item): array
     {
         return [
-            'segment_id' => ['required', 'exists:segments,id'],
-            'name' => ['required', 'string'],
+            'name' => ['required', 'string', 'unique:families'],
         ];
     }
 }

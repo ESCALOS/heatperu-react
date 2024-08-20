@@ -25,6 +25,8 @@ class BrandResource extends ModelResource
 
     public string $column = 'name';
 
+    protected int $itemsPerPage = 10;
+
     public function search(): array
     {
         return ['name'];

@@ -1,4 +1,3 @@
-import TopBar from "@/Components/TopBar"
 import GuestLayout from "@/Layouts/GuestLayout"
 
 export default function Home() {

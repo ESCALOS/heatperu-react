@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('families', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('segment_id')->constrained();
             $table->string('name')->unique();
             $table->string('image')->nullable();
             $table->timestamps();

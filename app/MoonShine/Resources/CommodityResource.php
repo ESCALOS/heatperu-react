@@ -8,7 +8,6 @@ use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Commodity;
 use App\Models\Family;
-use App\Models\Segment;
 use GianTiaga\MoonshineFile\Fields\SpatieUppyFile;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
@@ -19,6 +18,7 @@ use MoonShine\Fields\Relationships\BelongsTo;
 use MoonShine\Fields\Select;
 use MoonShine\Fields\Switcher;
 use MoonShine\Fields\Text;
+use MoonShine\Fields\TinyMce;
 use MoonShine\Handlers\ImportHandler;
 use MoonShine\QueryTags\QueryTag;
 use MoonShine\Resources\ModelResource;
@@ -35,6 +35,8 @@ class CommodityResource extends ModelResource
     protected array $with = ['brand', 'category'];
 
     public string $column = 'name';
+
+    protected int $itemsPerPage = 10;
 
     public function search(): array
     {
@@ -78,40 +80,25 @@ class CommodityResource extends ModelResource
     public function importFields(): array
     {
         return [
-            Text::make('Segmento', 'segmento'),
-            Text::make('Familia', 'familia'),
-            Text::make('Categoria', 'category_id'),
-            Text::make('Marca', 'brand_id'),
+            Text::make('FAMILIA', 'familia'),
+            Text::make('CLASE', 'category_id'),
+            Text::make('MARCA', 'brand_id'),
             Text::make('SKU', 'sku'),
-            Text::make('Nombre', 'name'),
-            Text::make('Descripcion', 'description'),
-            Text::make('Modelo', 'model'),
-            Text::make('Disponible', 'available'),
+            Text::make('PRODUCTO', 'name'),
+            Text::make('MODELO', 'model'),
+            Text::make('DISPONIBLE', 'available'),
         ];
     }
 
     public function beforeImportFilling(array $data): array
     {
-        $segment = Segment::firstOrCreate(
-            ['name' => $data['segmento']]
-        );
-
         $family = Family::firstOrCreate(
-            [
-                'name' => $data['familia'],
-            ],
-            [
-                'segment_id' => $segment->id,
-            ]
+            ['name' => $data['familia']],
         );
 
         $category = Category::firstOrCreate(
-            [
-                'name' => $data['category_id'],
-            ],
-            [
-                'family_id' => $family->id,
-            ]
+            ['name' => $data['category_id']],
+            ['family_id' => $family->id]
         );
 
         $brand = Brand::firstOrCreate(
@@ -120,7 +107,7 @@ class CommodityResource extends ModelResource
 
         $data['category_id'] = $category->id;
         $data['brand_id'] = $brand->id;
-        $data['available'] = $data['available'] === 'Sí';
+        $data['available'] = isset($data['available']) ? $data['available'] !== 'no' : true;
 
         return $data;
     }
@@ -141,7 +128,7 @@ class CommodityResource extends ModelResource
 
     public function import(): ?ImportHandler
     {
-        return ImportHandler::make('Importar');
+        return ImportHandler::make('Importar')->queue();
     }
 
     /**
@@ -177,7 +164,8 @@ class CommodityResource extends ModelResource
             Text::make('SKU', 'sku')->sortable(),
             Text::make('Nombre', 'name')->sortable(),
             Text::make('Modelo', 'model')->sortable(),
-            Text::make('Descripción', 'description'),
+            TinyMce::make('Descripción', 'description')
+                ->locale('es'),
             Switcher::make('¿Disponible?', 'available')
                 ->default(true),
             SpatieUppyFile::make('Imágenes', 'commodities')
@@ -220,7 +208,7 @@ class CommodityResource extends ModelResource
         return [
             'category_id' => ['required', 'exists:categories,id'],
             'brand_id' => ['required', 'exists:brands,id'],
-            'sku' => ['required', 'string'],
+            'sku' => ['required', 'string', 'unique:commodities,sku'],
             'name' => ['required', 'string', 'min:5'],
 
         ];
