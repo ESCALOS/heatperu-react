@@ -1,9 +1,14 @@
+import HomeSlider from "@/Components/HomeSlider"
 import GuestLayout from "@/Layouts/GuestLayout"
 
-export default function Home() {
+const Home = () => {
     return (
-        <GuestLayout>
-            <h1>Hola mundo</h1>
-        </GuestLayout>
+        <>
+            <HomeSlider />
+        </>
     )
 }
+
+Home.layout = (page: JSX.Element) => <GuestLayout children={page} title="Inicio" />
+
+export default Home
