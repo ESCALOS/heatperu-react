@@ -79,14 +79,14 @@ function Subscribe() {
             </form>
             <h2 className='my-6 mb-4 text-2xl font-bold text-white'>Síguenos</h2>
             <ul className='flex gap-4'>
-                <li className='p-1 text-white bg-blue-500 rounded-full'>
-                    <a href="https://www.facebook.com/heatfactoryperu" target='_blank' title='facebook'>
-                        <BiLogoFacebook size={36} />
+                <li>
+                    <a className='block p-1 text-white bg-blue-500 rounded-full' href="https://www.facebook.com/heatfactoryperu" target='_blank' title='facebook'>
+                        <BiLogoFacebook size={30} />
                     </a>
                 </li>
-                <li className='p-1 text-white rounded-full bg-gradient-to-tr from-[#F58529] via-[#DD2A7B] to-[#8134AF]'>
-                    <a href="https://www.instagram.com/calderas_quemadores_peru" target='_blank' title='instagram'>
-                        <BiLogoInstagram size={36} />
+                <li>
+                    <a className='block p-0.5 text-white rounded-lg' style={{ background: 'radial-gradient(circle at 33% 100%, #fed373 4%, #f15245 30%, #d92e7f 62%, #9b36b7 85%, #515ecf)' }} href="https://www.instagram.com/calderas_quemadores_peru" target='_blank' title='instagram'>
+                        <BiLogoInstagram size={32} />
                     </a>
                 </li>
             </ul>
