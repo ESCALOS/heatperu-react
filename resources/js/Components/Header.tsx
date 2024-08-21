@@ -1,16 +1,12 @@
-import { useId } from "react"
-import { BiSearchAlt } from "react-icons/bi";
-
+import ApplicationLogo from "./ApplicationLogo";
+import HeaderSearch from "./HeaderSearch";
 
 export default function Header() {
-    const searchId = useId();
 
     return (
-        <div className="flex items-center justify-around gap-2">
-            <input type="search" id={searchId} className="w-full " />
-            <button className="transition-colors bg-orange-400 hover:bg-orange-500">
-                <BiSearchAlt />
-            </button>
+        <div className='container flex flex-wrap items-center justify-center gap-4 py-6 bg-white md:justify-between'>
+            <ApplicationLogo />
+            <HeaderSearch />
         </div>
     )
 }

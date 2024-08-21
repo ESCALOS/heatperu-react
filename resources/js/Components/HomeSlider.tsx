@@ -18,10 +18,10 @@ export default () => {
             pagination={{ clickable: true }}
             className='h-96'
         >
-            <SwiperSlide className='content-center inline-block text-center bg-orange-200'>Slide 1</SwiperSlide>
-            <SwiperSlide className='content-center inline-block text-center bg-orange-200'>Slide 2</SwiperSlide>
-            <SwiperSlide className='content-center inline-block text-center bg-orange-200'>Slide 3</SwiperSlide>
-            <SwiperSlide className='content-center inline-block text-center bg-orange-200'>Slide 4</SwiperSlide>
+            <SwiperSlide className='content-center inline-block text-center bg-primary-200'>Slide 1</SwiperSlide>
+            <SwiperSlide className='content-center inline-block text-center bg-primary-200'>Slide 2</SwiperSlide>
+            <SwiperSlide className='content-center inline-block text-center bg-primary-200'>Slide 3</SwiperSlide>
+            <SwiperSlide className='content-center inline-block text-center bg-primary-200'>Slide 4</SwiperSlide>
         </Swiper>
     );
 };

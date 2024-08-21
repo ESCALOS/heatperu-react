@@ -1,10 +1,17 @@
+import FamilyList from "@/Components/FamilyList"
 import HomeSlider from "@/Components/HomeSlider"
 import GuestLayout from "@/Layouts/GuestLayout"
+import { Family } from "@/types"
 
-const Home = () => {
+type Props = {
+    families: Family[]
+}
+
+const Home = ({ families }: Props) => {
     return (
         <>
             <HomeSlider />
+            <FamilyList families={families} />
         </>
     )
 }

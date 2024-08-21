@@ -1,15 +1,14 @@
-import React from 'react'
-
-type Props = {}
-
-function Navbar({ }: Props) {
+function Navbar() {
     return (
-        <div className='flex items-center justify-around w-full h-20 p-4 text-lg font-black text-white bg-orange-500'>
-            <a href="/">INICIO</a>
-            <a href="/">INICIO</a>
-            <a href="/">INICIO</a>
-            <a href="/">INICIO</a>
+        <div className='bg-primary-500'>
+            <nav className='container flex items-center justify-around w-full h-20 py-4 text-lg font-black text-white'>
+                <a href="/">INICIO</a>
+                <a href="/">INICIO</a>
+                <a href="/">INICIO</a>
+                <a href="/">INICIO</a>
+            </nav>
         </div>
+
     )
 }
 
