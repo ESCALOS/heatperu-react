@@ -7,6 +7,7 @@ namespace App\MoonShine\Resources;
 use App\Models\Family;
 use GianTiaga\MoonshineFile\Fields\SpatieUppyFile;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Validation\Rule;
 use MoonShine\Components\MoonShineComponent;
 use MoonShine\Decorations\Block;
 use MoonShine\Fields\Field;
@@ -61,7 +62,7 @@ class FamilyResource extends ModelResource
     public function rules(Model $item): array
     {
         return [
-            'name' => ['required', 'string', 'unique:families'],
+            'name' => ['required', 'string', Rule::unique('families')->ignore($item->id)],
         ];
     }
 }

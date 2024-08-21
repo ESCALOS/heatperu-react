@@ -7,6 +7,7 @@ namespace App\MoonShine\Resources;
 use App\Models\Category;
 use GianTiaga\MoonshineFile\Fields\SpatieUppyFile;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Validation\Rule;
 use MoonShine\Components\MoonShineComponent;
 use MoonShine\Decorations\Block;
 use MoonShine\Fields\Field;
@@ -66,7 +67,7 @@ class CategoryResource extends ModelResource
     {
         return [
             'family_id' => ['required', 'exists:families,id'],
-            'name' => ['required', 'string'],
+            'name' => ['required', 'string', Rule::unique('categories')->ignore($item->id)],
         ];
     }
 }

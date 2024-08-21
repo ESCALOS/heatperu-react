@@ -6,6 +6,7 @@ namespace App\MoonShine\Resources;
 
 use App\Models\Brand;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Validation\Rule;
 use MoonShine\Components\MoonShineComponent;
 use MoonShine\Decorations\Block;
 use MoonShine\Fields\Field;
@@ -58,7 +59,7 @@ class BrandResource extends ModelResource
     public function rules(Model $item): array
     {
         return [
-            'name' => 'required|string',
+            'name' => ['required', 'string', Rule::unique('brands')->ignore($item->id)],
         ];
     }
 }

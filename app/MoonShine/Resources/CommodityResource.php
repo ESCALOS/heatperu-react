@@ -12,6 +12,7 @@ use GianTiaga\MoonshineFile\Fields\SpatieUppyFile;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Request;
+use Illuminate\Validation\Rule;
 use MoonShine\ActionButtons\ActionButton;
 use MoonShine\Components\MoonShineComponent;
 use MoonShine\Fields\Field;
@@ -264,7 +265,7 @@ class CommodityResource extends ModelResource
         return [
             'category_id' => ['required', 'exists:categories,id'],
             'brand_id' => ['required', 'exists:brands,id'],
-            'sku' => ['required', 'string', 'unique:commodities,sku'],
+            'sku' => ['required', 'string', Rule::unique('commodities')->ignore($item->id)],
             'name' => ['required', 'string', 'min:5'],
 
         ];
