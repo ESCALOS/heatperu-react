@@ -40,7 +40,7 @@ class HandleInertiaRequests extends Middleware
                 ...(new Ziggy)->toArray(),
                 'location' => $request->url(),
             ],
-            'familyList' => Family::with(['media'])->orderBy('name', 'asc')->get(),
+            'familyList' => Family::with(['media'])->get(),
         ];
     }
 }

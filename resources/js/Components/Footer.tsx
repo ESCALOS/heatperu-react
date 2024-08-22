@@ -18,7 +18,7 @@ function FamilyList() {
     const { familyList } = usePage<PageProps>().props;
     const shuffledFamilyList = shuffleArray(familyList);
     return (
-        <ListTemplate title='Familias'>
+        <ListTemplate title='Categorías'>
             <ul className='flex flex-col gap-4 text-gray-200 capitalize'>
                 {shuffledFamilyList.slice(0, 6).map(family => (
                     <li key={family.id}><a href="/">{family.name.toLocaleLowerCase()}</a></li>
@@ -71,7 +71,7 @@ function ContactUs() {
 function Subscribe() {
     const subscribeId = useId();
     return (
-        <ListTemplate title='Suscripción'>
+        <ListTemplate title='Suscribete'>
             <form action="/" className='flex'>
                 <input required type="email" placeholder='Email' id={subscribeId} name='email' className='w-full p-4 text-sm text-gray-700 border-gray-400 rounded-l-md focus:ring focus:ring-transparent focus:border-gray-400' />
                 <button className='px-4 py-2 text-white bg-green-500 rounded-r-md'><BiPaperPlane size={24} /></button>

@@ -5,6 +5,7 @@ import { BsWhatsapp } from 'react-icons/bs'
 
 const FamilyList = () => {
     const { familyList } = usePage<PageProps>().props;
+    const sortedFamilyList = familyList.sort((a, b) => a.name.localeCompare(b.name))
     return (
         <div className='container py-12'>
             <div className="flex flex-wrap justify-center gap-6">
