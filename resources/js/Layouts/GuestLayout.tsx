@@ -2,12 +2,10 @@ import Copyright from '@/Components/Copyright';
 import Footer from '@/Components/Footer';
 import Header from '@/Components/Header';
 import Navbar from '@/Components/Navbar';
-import { Family } from '@/types';
 import { Head } from '@inertiajs/react';
 type Props = {
     children: React.ReactNode,
-    title: string,
-    familyList: Family[]
+    title: string
 }
 
 export default function Guest({ children, title }: Props) {

@@ -1,17 +1,21 @@
-import FamilyList from "@/Components/FamilyList"
-import HomeSlider from "@/Components/HomeSlider"
+import CommoditySearchResults from "@/Components/CommoditySearchResults"
 import GuestLayout from "@/Layouts/GuestLayout"
-import { Family } from "@/types"
+import { Commodity } from "@/types"
+import HomePage from "@/Components/HomePage"
 
 type Props = {
-    families: Family[]
+    commodities?: Commodity[]
 }
 
-const Home = ({ families }: Props) => {
+const Home = ({ commodities }: Props) => {
+
     return (
         <>
-            <HomeSlider />
-            <FamilyList families={families} />
+            {commodities ? (
+                <CommoditySearchResults commodities={commodities} />
+            ) : (
+                <HomePage />
+            )}
         </>
     )
 }

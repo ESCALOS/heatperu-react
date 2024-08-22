@@ -4,7 +4,6 @@ import { shuffleArray } from '@/utils';
 import { usePage } from '@inertiajs/react';
 import { ReactNode, useId } from 'react';
 import { BiCalendar, BiEnvelope, BiLogoFacebook, BiLogoInstagram, BiMapPin, BiMobile, BiPaperPlane } from 'react-icons/bi';
-import { FaFacebook, FaInstagram } from 'react-icons/fa';
 
 function ListTemplate({ title, children }: { title: string, children: ReactNode }) {
     return (
