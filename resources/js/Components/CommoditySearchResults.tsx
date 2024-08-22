@@ -14,16 +14,16 @@ const CommoditySearchResults = ({ commodities }: Props) => {
             </h1>
             {commodities.length > 0 ? (
                 <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3">
-                    {commodities.map((commodity) => (
+                    {commodities.map(({ id, name, media }) => (
                         <div
-                            key={commodity.id}
+                            key={id}
                             className="flex flex-col items-center gap-4 p-4 text-center border"
                         >
-                            <h2 className="font-semibold text-md">{commodity.name}</h2>
-                            {commodity.media.length > 0 ? (
+                            <h2 className="font-semibold text-md">{name}</h2>
+                            {media.length > 0 ? (
                                 <img
-                                    src={commodity.media[0].original_url}
-                                    alt={commodity.name}
+                                    src={media[0].original_url}
+                                    alt={name}
                                     className="object-cover w-64 h-64 rounded-lg"
                                 />
                             ) : (

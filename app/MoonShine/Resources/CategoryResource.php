@@ -7,6 +7,7 @@ namespace App\MoonShine\Resources;
 use App\Models\Category;
 use GianTiaga\MoonshineFile\Fields\SpatieUppyFile;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Request;
 use Illuminate\Validation\Rule;
 use MoonShine\Components\MoonShineComponent;
 use MoonShine\Decorations\Block;
@@ -31,6 +32,13 @@ class CategoryResource extends ModelResource
     protected int $itemsPerPage = 10;
 
     protected array $with = ['family'];
+
+    public function redirectAfterSave(): string
+    {
+        $referer = Request::header('referer');
+
+        return $referer ?: '/';
+    }
 
     public function search(): array
     {

@@ -40,6 +40,7 @@ export interface Media {
 export interface Family {
     id: number;
     name: string;
+    slug: string;
     created_at: string;
     updated_at: string;
     media: Media[];
@@ -48,6 +49,7 @@ export interface Family {
 export interface Brand {
     id: number;
     name: string;
+    slug: string;
     created_at: string;
     updated_at: string;
     media: Media[];
@@ -56,6 +58,7 @@ export interface Brand {
 export interface Category {
     id: number;
     name: string;
+    slug: string;
     family_id: number;
     family?: Family;
     created_at: string;
@@ -69,6 +72,7 @@ export interface Commodity {
     category?: Category;
     sku: string;
     name: string;
+    slug: string;
     brand_id: number;
     brand?: Brand;
     model?: string;

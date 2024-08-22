@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('family_id')->constrained();
             $table->string('name')->unique();
             $table->string('image')->nullable();
+            $table->string('slug')->unique();
             $table->timestamps();
             $table->softDeletes();
         });

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOneThrough;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Str;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 
@@ -17,6 +18,19 @@ class Commodity extends Model implements HasMedia
     use SoftDeletes;
 
     protected $guarded = ['created_at', 'updated_at', 'deleted_at'];
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($commodity) {
+            $commodity->slug = Str::slug($commodity->name);
+        });
+
+        static::updating(function ($commodity) {
+            $commodity->slug = Str::slug($commodity->name);
+        });
+    }
 
     public function category(): BelongsTo
     {
