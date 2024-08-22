@@ -13,11 +13,11 @@ const CommoditySearchResults = ({ commodities }: Props) => {
                 Lista de Productos
             </h1>
             {commodities.length > 0 ? (
-                <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3">
+                <div className="flex flex-wrap items-center justify-center gap-6">
                     {commodities.map(({ id, name, media }) => (
                         <div
                             key={id}
-                            className="flex flex-col items-center gap-4 p-4 text-center border"
+                            className="flex flex-col items-center gap-4 p-4 text-center border h-[434px] w-[294px]"
                         >
                             <h2 className="font-semibold text-md">{name}</h2>
                             {media.length > 0 ? (

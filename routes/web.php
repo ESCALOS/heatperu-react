@@ -4,9 +4,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CommodityController;
 use App\Http\Controllers\FamilyController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 
 // Route::get('/', function () {
 //     return Inertia::render('Welcome', [
@@ -19,9 +17,9 @@ use Inertia\Inertia;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::inertia('/nosotros', 'About')->name('about');
-Route::inertia('/contactenos', 'Contact')->name('contact');
-
 Route::get('/productos', [CommodityController::class, 'index'])->name('commodity.index');
+Route::inertia('/proyectos', 'Projects')->name('projects');
+Route::inertia('/contactenos', 'Contact')->name('contact');
 // Ruta para Family
 Route::get('/{family}', [FamilyController::class, 'show'])->name('family.show');
 

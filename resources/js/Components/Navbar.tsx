@@ -7,6 +7,7 @@ function Navbar() {
                 <Link href="/">Inicio</Link>
                 <Link href="/nosotros">Nosotros</Link>
                 <Link href="/productos">Productos</Link>
+                <Link href="/proyectos">Proyectos</Link>
                 <Link href="/contactenos">Contáctanos</Link>
             </nav>
         </div>
