@@ -14,7 +14,7 @@ export default function Guest({ children, title }: Props) {
             <Head>
                 <title>{title}</title>
             </Head>
-            <header className='bg-white md:sticky md:top-0 md:z-20'>
+            <header>
                 <Header />
                 <Navbar />
             </header>
