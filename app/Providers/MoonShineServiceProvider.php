@@ -43,22 +43,22 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
     protected function menu(): array
     {
         return [
-            MenuGroup::make(static fn () => __('moonshine::ui.resource.system'), [
+            MenuGroup::make(static fn () => __('System'), [
                 MenuItem::make(
-                    static fn () => __('moonshine::ui.resource.users_title'),
+                    static fn () => __('Users'),
                     new MoonShineUserResource,
                 ),
                 MenuItem::make(
-                    static fn () => __('moonshine::ui.resource.role_title'),
+                    static fn () => __('Roles'),
                     new MoonShineUserRoleResource,
                     'heroicons.shield-exclamation'
                 ),
             ], 'heroicons.user-group')
                 ->canSee(fn (Request $request) => $request->user('moonshine')?->moonshine_user_role_id === 1),
-            MenuItem::make(__('moonshine::ui.resource.families_title'), new FamilyResource, 'heroicons.chart-pie'),
-            MenuItem::make(__('moonshine::ui.resource.categories_title'), new CategoryResource, 'heroicons.tag'),
-            MenuItem::make(__('moonshine::ui.resource.brands_title'), new BrandResource, 'heroicons.bookmark'),
-            MenuItem::make(__('moonshine::ui.resource.commodities_title'), new CommodityResource, 'heroicons.cube'),
+            MenuItem::make(__('Families'), new FamilyResource, 'heroicons.chart-pie'),
+            MenuItem::make(__('Categories'), new CategoryResource, 'heroicons.tag'),
+            MenuItem::make(__('Brands'), new BrandResource, 'heroicons.bookmark'),
+            MenuItem::make(__('Commodities'), new CommodityResource, 'heroicons.cube'),
         ];
     }
 

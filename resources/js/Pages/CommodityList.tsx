@@ -22,15 +22,6 @@ type Props = {
 const CommodityList = ({ commodities, category }: Props) => {
     const categoryName = category?.name || 'Lista de Productos';
 
-    useEffect(() => {
-        console.log(commodities);
-
-        return () => {
-            console.clear();
-            console.log('Lista desmontada');
-        }
-    }, [])
-
     return (
         <Guest title={categoryName}>
             <Breadcrumb title={categoryName} backgroundImage="/megumi.jpg" />
@@ -45,7 +36,7 @@ const CommodityList = ({ commodities, category }: Props) => {
                                 key={id}
                                 className="flex flex-col items-center gap-4 p-4 text-center border h-[434px] w-[294px]"
                             >
-                                <h2 className="content-center inline-block h-[72px] overflow-hidden font-semibold line-clamp-2 text-md">{name}</h2>
+                                <h2 className="content-center inline-block h-[72px] overflow-hidden font-semibold text-sm">{name}</h2>
                                 {media.length > 0 ? (
                                     <img
                                         src={media[0].original_url}
