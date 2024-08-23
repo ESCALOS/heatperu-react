@@ -1,5 +1,6 @@
 import { PageProps } from '@/types';
 import { Link, usePage } from '@inertiajs/react';
+import Card from './Card';
 
 const FamilyList = () => {
     const { familyList } = usePage<PageProps>().props;
@@ -10,29 +11,14 @@ const FamilyList = () => {
             <div className="flex flex-wrap justify-center gap-6">
                 {sortedFamilyList.map(({ id, name, slug, media }) => {
                     return (
-                        <div
+                        <Card
                             key={id}
-                            className="flex flex-col items-center gap-4 p-4 text-center border"
-                        >
-                            <h2 className="font-semibold text-md">{name}</h2>
-                            {media.length > 0 ? (
-                                <img
-                                    src={media[0].original_url}
-                                    alt={name}
-                                    className="object-cover w-64 h-64 rounded-lg"
-                                />
-                            ) : (
-                                <p className="flex items-center justify-center w-64 h-64 bg-gray-100">
-                                    Imagen no disponible
-                                </p>
-                            )}
-                            <Link
-                                href={`/${slug}`}
-                                className='w-full px-4 py-2 font-bold text-white transition-colors rounded-md bg-secondary-500 hover:bg-secondary-400'
-                            >
-                                Ver más
-                            </Link>
-                        </div>
+                            title={name}
+                            imgPath={media[0]?.original_url}
+                            footer={
+                                <Link href={`/${slug}`} className=' button-card'>Ver más</Link>
+                            }>
+                        </Card>
                     );
                 })}
             </div>

@@ -1,9 +1,10 @@
 import Breadcrumb from '@/Components/Breadcrumb';
+import Card from '@/Components/Card';
 import Pagination from '@/Components/Pagination';
 import Guest from '@/Layouts/GuestLayout';
-import { Category, Commodity, Family, PageProps } from '@/types'
+import { Category, Commodity } from '@/types'
 import { Link } from '@inertiajs/react'
-import { useEffect } from 'react';
+import { BsWhatsapp } from 'react-icons/bs';
 
 type Props = {
     commodities: {
@@ -32,26 +33,17 @@ const CommodityList = ({ commodities, category }: Props) => {
                 <div className="flex flex-wrap justify-center gap-6">
                     {commodities.data.map(({ id, name, slug, media, category }) => {
                         return (
-                            <div
+                            <Card
                                 key={id}
-                                className="flex flex-col items-center gap-4 p-4 text-center border h-[434px] w-[294px]"
-                            >
-                                <h2 className="content-center inline-block h-[72px] overflow-hidden font-semibold text-sm">{name}</h2>
-                                {media.length > 0 ? (
-                                    <img
-                                        src={media[0].original_url}
-                                        alt={name}
-                                        className="object-cover w-64 h-64 rounded-lg"
-                                    />
-                                ) : (
-                                    <p className="flex items-center justify-center w-64 h-64 bg-gray-100">
-                                        Imagen no disponible
-                                    </p>
-                                )}
-                                <Link href={`/${category?.family?.slug}/${category?.slug}/${slug}`} className='w-full px-4 py-2 font-bold text-white transition-colors rounded-md bg-secondary-500 hover:bg-secondary-400'>
-                                    Ver más
-                                </Link>
-                            </div>
+                                title={name}
+                                titleHeight={60}
+                                imgPath={media[0]?.original_url}
+                                footer={
+                                    <button className='button-card'>
+                                        <BsWhatsapp size={22} className='content-center inline-block' /> Consultar ahora
+                                    </button>
+                                }
+                            />
                         )
                     })}
                 </div>

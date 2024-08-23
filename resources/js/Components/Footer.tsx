@@ -20,20 +20,8 @@ function FamilyList() {
     return (
         <ListTemplate title='Categorías'>
             <ul className='flex flex-col gap-4 text-gray-200 capitalize'>
-                {shuffledFamilyList.slice(0, 6).map(family => (
+                {shuffledFamilyList.slice(0, 5).map(family => (
                     <li key={family.id}><a href="/">{family.name.toLocaleLowerCase()}</a></li>
-                ))}
-            </ul>
-        </ListTemplate>
-    )
-}
-
-function QuickLinks() {
-    return (
-        <ListTemplate title='Enlaces rápidos'>
-            <ul className='flex flex-col gap-4 text-gray-200 capitalize'>
-                {footerQuickLinks.map(({ id, title, url }) => (
-                    <li key={id}><a href={url}>{title}</a></li>
                 ))}
             </ul>
         </ListTemplate>
@@ -44,24 +32,23 @@ function ContactUs() {
 
     return (
         <ListTemplate title='Contáctanos'>
-            <ul className='flex flex-col gap-4 text-sm text-gray-200 max-w-48'>
-                <li>
-                    <BiMapPin className='content-center inline-block mr-2' />
-                    <span>Av. Argentina 575 Tienda H13
-                        Urb. Lima Industrial - Cercado de Lima</span>
+            <ul className='flex flex-col gap-4 text-sm text-gray-200'>
+                <li className='flex gap-2'>
+                    <BiMapPin />
+                    <span>Av. Argentina 575 Tienda H13 <br /> Urb. Lima Industrial - Cercado de Lima</span>
                 </li>
-                <li>
-                    <BiMobile className='content-center inline-block mr-2' />
+                <li className='flex gap-2'>
+                    <BiMobile />
                     <a href="tel:961749562">961-749-562</a>
                 </li>
-                <li>
-                    <BiEnvelope className='content-center inline-block mr-2' />
+                <li className='flex gap-2'>
+                    <BiEnvelope />
                     <a href="mailto:ventas@heatperu.com">ventas@heatperu.com</a>
                 </li>
-                <li>
-                    <BiCalendar className='content-center inline-block mr-2' />
-                    <span>Lunes a Viernes de </span><br /><span className='ml-6'>9:30am - 6:00pm</span><br />
-                    <span>Sábados de 9:30am - 3:00pm</span>
+                <li className='flex gap-2'>
+                    <BiCalendar />
+                    <span>Lunes a Viernes de 9:30am - 6:00pm<br />
+                        Sábados de 9:30am - 3:00pm</span>
                 </li>
             </ul>
         </ListTemplate>
@@ -74,7 +61,7 @@ function Subscribe() {
         <ListTemplate title='Suscribete'>
             <form action="/" className='flex'>
                 <input required type="email" placeholder='Email' id={subscribeId} name='email' className='w-full p-4 text-sm text-gray-700 border-gray-400 rounded-l-md focus:ring focus:ring-transparent focus:border-gray-400' />
-                <button className='px-4 py-2 text-white bg-green-500 rounded-r-md'><BiPaperPlane size={24} /></button>
+                <button className='px-4 py-2 text-white bg-primary-500 rounded-r-md'><BiPaperPlane size={24} /></button>
             </form>
             <h2 className='my-6 mb-4 text-2xl font-bold text-white'>Síguenos</h2>
             <ul className='flex gap-4'>
@@ -96,10 +83,9 @@ function Subscribe() {
 export default function Footer() {
 
     return (
-        <div className='bg-gradient-to-b from-secondary-500 to-primary-500'>
+        <div className='bg-secondary-500'>
             <div className='container flex flex-wrap items-start justify-around gap-8 py-12'>
                 <FamilyList />
-                <QuickLinks />
                 <ContactUs />
                 <Subscribe />
             </div>
