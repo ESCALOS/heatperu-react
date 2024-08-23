@@ -1,5 +1,5 @@
 // import Swiper core and required modules
-import { Navigation, Pagination, EffectFade } from 'swiper/modules';
+import { Autoplay, Navigation, Pagination, EffectFade } from 'swiper/modules';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -8,20 +8,37 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/effect-fade';
+import { homeSlides } from '@/constants'
 
 export default () => {
     return (
         <Swiper
-            modules={[Navigation, Pagination, EffectFade]}
+            modules={[Autoplay, Navigation, Pagination, EffectFade]}
             effect='fade'
             navigation
             pagination={{ clickable: true }}
-            className='h-96'
+            loop={true}
+            autoplay={{
+                delay: 2000,
+                disableOnInteraction: false,
+            }}
+            className='custom-swiper'
         >
-            <SwiperSlide className='content-center inline-block text-center bg-primary-200'>Slide 1</SwiperSlide>
-            <SwiperSlide className='content-center inline-block text-center bg-primary-200'>Slide 2</SwiperSlide>
-            <SwiperSlide className='content-center inline-block text-center bg-primary-200'>Slide 3</SwiperSlide>
-            <SwiperSlide className='content-center inline-block text-center bg-primary-200'>Slide 4</SwiperSlide>
+            {
+                homeSlides.map(({ id, alt }) =>
+                    <SwiperSlide key={id} className='flex justify-center text-center bg-white'>
+                        <img
+                            src={`/images/slider/Imagen${id}.png`}
+                            alt={alt}
+                            style={{
+                                maxHeight: '384px',
+                                objectFit: 'cover',
+                                display: 'inline-block',
+                                textAlign: 'center'
+                            }} />
+                    </SwiperSlide>
+                )
+            }
         </Swiper>
     );
 };

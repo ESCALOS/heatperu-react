@@ -10,3 +10,12 @@ export const navbarLinks = [
     { id: 4, title: "Proyectos", url: "/proyectos", component: "Projects" },
     { id: 5, title: "Contáctenos", url: "/contactenos", component: "Contact" },
 ];
+export const homeSlides = [
+    { id: 1, alt: "Productos Marca Baite" },
+    { id: 2, alt: "Productos Marca Power Flame Inc." },
+    { id: 3, alt: "Productos Marca Suntec Industries" },
+    { id: 4, alt: "Productos Marca MacDonnell & Miller" },
+    { id: 5, alt: "Productos Marca Beckett" },
+    { id: 6, alt: "Productos Marca Wayne Combustions Systems" },
+    { id: 7, alt: "Productos Marca Honeywell" },
+];
