@@ -15,7 +15,7 @@ export default function HeaderSearch() {
     return (
         <form
             onSubmit={handleSubmit}
-            className="flex items-center justify-center md:justify-around w-full max-w-[600px] h-[52px]"
+            className="flex items-center justify-center md:justify-around w-full h-[52px] col-span-1 lg:col-span-2"
         >
             <input
                 type="search"
