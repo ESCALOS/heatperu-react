@@ -2,11 +2,11 @@ import { PageProps } from '@/types';
 import { shuffleArray } from '@/utils';
 import { usePage } from '@inertiajs/react';
 import { ReactNode, useId } from 'react';
-import { BiCalendar, BiEnvelope, BiLogoFacebook, BiLogoInstagram, BiMapPin, BiMobile, BiPaperPlane } from 'react-icons/bi';
+import { BiCalendar, BiEnvelope, BiLogoFacebook, BiLogoInstagram, BiLogoLinkedin, BiMapPin, BiMobile, BiPaperPlane } from 'react-icons/bi';
 
 function ListTemplate({ title, children }: { title: string, children: ReactNode }) {
     return (
-        <div className='min-w-[272px]'>
+        <div className='min-w-[290px]'>
             <h2 className='mb-4 text-2xl font-bold text-white'>{title}</h2>
             {children}
         </div>
@@ -57,12 +57,7 @@ function ContactUs() {
 function Subscribe() {
     const subscribeId = useId();
     return (
-        <ListTemplate title='Suscribete'>
-            <form action="/" className='flex'>
-                <input required type="email" placeholder='Email' id={subscribeId} name='email' className='w-full p-4 text-sm text-gray-700 border-gray-400 rounded-l-md focus:ring focus:ring-transparent focus:border-gray-400' />
-                <button className='px-4 py-2 text-white bg-primary-500 rounded-r-md'><BiPaperPlane size={24} /></button>
-            </form>
-            <h2 className='my-6 mb-4 text-2xl font-bold text-white'>Síguenos</h2>
+        <ListTemplate title='Síguenos'>
             <ul className='flex gap-4'>
                 <li>
                     <a className='block p-1 text-white bg-blue-500 rounded-full' href="https://www.facebook.com/heatfactoryperu" target='_blank' title='facebook'>
@@ -74,7 +69,17 @@ function Subscribe() {
                         <BiLogoInstagram size={32} />
                     </a>
                 </li>
+                <li>
+                    <a className='block p-1 text-white bg-blue-500 rounded-md' href="https://www.facebook.com/heatfactoryperu" target='_blank' title='facebook'>
+                        <BiLogoLinkedin size={30} />
+                    </a>
+                </li>
             </ul>
+            <h2 className='my-6 mb-4 text-2xl font-bold text-white'>Suscríbete</h2>
+            <form action="/" className='flex'>
+                <input required type="email" placeholder='Email' id={subscribeId} name='email' className='w-full p-4 text-sm text-gray-700 border-gray-400 rounded-l-md focus:ring focus:ring-transparent focus:border-gray-400' />
+                <button className='px-4 py-2 text-white bg-primary-500 rounded-r-md'><BiPaperPlane size={24} /></button>
+            </form>
         </ListTemplate>
     )
 }

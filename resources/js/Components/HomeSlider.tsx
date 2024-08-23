@@ -31,7 +31,7 @@ export default () => {
                             src={`/images/slider/Imagen${id}.png`}
                             alt={alt}
                             style={{
-                                maxHeight: '384px',
+                                maxHeight: '650px',
                                 objectFit: 'cover',
                                 display: 'inline-block',
                                 textAlign: 'center'

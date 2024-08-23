@@ -2,6 +2,8 @@ import { navbarLinks } from "@/constants"
 import { Link, usePage } from "@inertiajs/react"
 import { motion } from "framer-motion"
 import { useEffect, useState } from "react";
+import { FaBars } from "react-icons/fa";
+import { FaXmark } from "react-icons/fa6";
 
 function Menu({ isMobile = false }) {
     const { component: currentComponent } = usePage();
@@ -31,9 +33,13 @@ function Navbar() {
     }, []);
 
     return (
-        <nav className='bg-secondary-500'>
-            <button className='w-full p-4 font-bold text-white md:hidden bg-primary-500' onClick={() => setOpen(!open)}>
-                {open ? 'Cerrar ' : 'Abrir'} Menú
+        <nav className='text-right bg-secondary-500'>
+            <button className='inline-block p-4 font-bold text-white md:hidden bg-primary-500' onClick={() => setOpen(!open)}>
+                {
+                    open ? <FaXmark className="w-6 h-6" strokeWidth={2} />
+                        : <FaBars className="w-6 h-6" strokeWidth={2} />
+
+                }
             </button>
             <Menu />
             <motion.div
