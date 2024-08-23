@@ -1,4 +1,3 @@
-import { footerQuickLinks } from '@/constants';
 import { PageProps } from '@/types';
 import { shuffleArray } from '@/utils';
 import { usePage } from '@inertiajs/react';
