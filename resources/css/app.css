@@ -13,3 +13,7 @@
 .custom-swiper {
     --swiper-theme-color: #f04e23;
 }
+
+.contact-input {
+    @apply w-full p-4 border rounded-lg outline-none focus:border-primary-500 focus:ring-transparent border-secondary-500;
+}
