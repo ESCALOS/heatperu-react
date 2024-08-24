@@ -13,7 +13,7 @@ const Breadcrumb = ({ title, backgroundImage }: BreadcrumbProps) => {
 
     return (
         <div
-            className="relative flex items-center justify-center text-white bg-center bg-cover h-52"
+            className="relative flex items-center justify-center object-cover text-white bg-center bg-cover h-52"
             style={{ backgroundImage: `url(${backgroundImage})` }}
         >
             <div className="absolute inset-0 bg-black opacity-50"></div>

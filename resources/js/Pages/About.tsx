@@ -6,7 +6,7 @@ type Props = {}
 function About({ }: Props) {
     return (
         <div>
-            <Breadcrumb title="Nosotros" backgroundImage="/megumi.jpg" />
+            <Breadcrumb title="Nosotros" backgroundImage="/images/breadcrumb/nosotros.png" />
         </div>
     )
 }
