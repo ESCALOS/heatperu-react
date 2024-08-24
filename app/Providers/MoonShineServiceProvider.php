@@ -56,7 +56,7 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
             ], 'heroicons.user-group')
                 ->canSee(fn (Request $request) => $request->user('moonshine')?->moonshine_user_role_id === 1),
             MenuItem::make(__('Families'), new FamilyResource, 'heroicons.chart-pie'),
-            MenuItem::make(__('Categories'), new CategoryResource, 'heroicons.tag'),
+            MenuItem::make(__('Classes'), new CategoryResource, 'heroicons.tag'),
             MenuItem::make(__('Brands'), new BrandResource, 'heroicons.bookmark'),
             MenuItem::make(__('Commodities'), new CommodityResource, 'heroicons.cube'),
         ];

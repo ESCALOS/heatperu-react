@@ -137,7 +137,7 @@ class CommodityResource extends ModelResource
 
     public function import(): ?ImportHandler
     {
-        return ImportHandler::make('Importar')->queue();
+        return ImportHandler::make('Importar')->queue()->deleteAfter();
     }
 
     public function redirectAfterSave(): string
