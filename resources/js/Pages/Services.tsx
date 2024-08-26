@@ -4,19 +4,19 @@ import Guest from '@/Layouts/GuestLayout'
 
 type Service = {
     id: number
-    name: string
+    title: string
     text: string
-    image: string
 }
 
-function ServiceItem({ title, text, image }: { title: string, text: string, image: string }) {
+function ServiceItem({ id, title, text }: Service) {
     return (
-        <div className='grid grid-cols-1 gap-4 md:grid-cols-2 h-96'>
-            <img src={image} alt={title} className='object-cover' />
-            <div>
-                <h2>{title}</h2>
-                <p>{text}</p>
+
+        <div className='grid items-center grid-cols-1 gap-4 px-4 py-4 rounded-md lg:grid-cols-2'>
+            <div className={`${id % 2 === 0 ? 'lg:order-2' : 'lg:order-1'} bg-zinc-100 h-full flex flex-col justify-center p-6 md:p-12`}>
+                <h2 className='mb-4 text-2xl font-black text-center text-red-500 md:mb-8 md:text-3xl lg:text-4xl'>{title}</h2>
+                <p className='text-sm text-justify md:text-base text-zinc-500'>{text}</p>
             </div>
+            <img src={`/images/services/3.jpeg`} alt={title} className={`object-cover h-full aspect-video rounded-md ${id % 2 === 0 ? 'lg:order-1' : 'lg:order-2'}`} />
         </div>
     )
 }
@@ -27,10 +27,10 @@ function Services() {
     return (
         <Guest title='Servicios'>
             <Breadcrumb title='Servicios' />
-            <div className='px-4 py-12 mx-auto space-y-8 max-w-7xl'>
+            <div className='py-4 mx-auto space-y-4 max-w-7xl'>
                 {
-                    services.map(({ id, title, text, image }) =>
-                        <ServiceItem title={title} text={text} key={id} image={image} />
+                    services.map((service) =>
+                        <ServiceItem {...service} key={service.id} />
                     )
                 }
             </div>
