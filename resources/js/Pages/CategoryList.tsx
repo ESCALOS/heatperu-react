@@ -12,7 +12,7 @@ type Props = {
 const CategoryList = ({ categories, family }: Props) => {
     return (
         <Guest title={family.name}>
-            <Breadcrumb title={family.name} backgroundImage="/megumi.jpg" />
+            <Breadcrumb title={family.name} />
             <div className='container py-12'>
                 <h1 className="mb-8 text-3xl font-bold text-center">
                     <span className='capitalize'>{family.name}</span>

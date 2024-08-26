@@ -2,10 +2,9 @@ import { Link, usePage } from '@inertiajs/react';
 
 type BreadcrumbProps = {
     title: string;
-    backgroundImage: string;
 };
 
-const Breadcrumb = ({ title, backgroundImage }: BreadcrumbProps) => {
+const Breadcrumb = ({ title }: BreadcrumbProps) => {
     const { url } = usePage();
 
     // Split the URL by '?' to ignore query parameters, then split by '/'
@@ -14,7 +13,7 @@ const Breadcrumb = ({ title, backgroundImage }: BreadcrumbProps) => {
     return (
         <div
             className="relative flex items-center justify-center object-cover text-white bg-center bg-cover h-52"
-            style={{ backgroundImage: `url(${backgroundImage})` }}
+            style={{ backgroundImage: `url('/images/breadcrumb.webp')` }}
         >
             <div className="absolute inset-0 bg-black opacity-50"></div>
             <div className="relative z-10 flex flex-col items-center">

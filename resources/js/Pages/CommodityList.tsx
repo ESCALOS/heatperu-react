@@ -3,7 +3,6 @@ import Card from '@/Components/Card';
 import Pagination from '@/Components/Pagination';
 import Guest from '@/Layouts/GuestLayout';
 import { Category, Commodity } from '@/types'
-import { Link } from '@inertiajs/react'
 import { BsWhatsapp } from 'react-icons/bs';
 
 type Props = {
@@ -25,13 +24,13 @@ const CommodityList = ({ commodities, category }: Props) => {
 
     return (
         <Guest title={categoryName}>
-            <Breadcrumb title={categoryName} backgroundImage="/megumi.jpg" />
+            <Breadcrumb title={categoryName} />
             <div className='container py-12'>
                 <h1 className="mb-8 text-3xl font-bold text-center">
                     <span className='capitalize'>{categoryName}</span>
                 </h1>
-                <div className="flex flex-wrap justify-center gap-6">
-                    {commodities.data.map(({ id, name, slug, media, category }) => {
+                <div className="flex flex-wrap justify-center gap-6" id='productList'>
+                    {commodities.data.map(({ id, name, media }) => {
                         return (
                             <Card
                                 key={id}

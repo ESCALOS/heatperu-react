@@ -9,7 +9,7 @@ type Props = {
 const CommodityDetail = ({ commodity: { name, media, description } }: Props) => {
     return (
         <Guest title={name}>
-            <Breadcrumb title={name} backgroundImage="/megumi.jpg" />
+            <Breadcrumb title={name} />
             <div className='container py-12'>
                 <h1 className="mb-8 text-2xl font-bold text-center">
                     {name}
