@@ -25,7 +25,7 @@ function Contact({ }: Props) {
                     <ContactForm />
                 </div>
             </section>
-            <div className="h-80"><GoogleMap /></div>
+            <div className="h-[450px]"><GoogleMap /></div>
         </>
     )
 }

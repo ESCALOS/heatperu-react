@@ -7,7 +7,7 @@ export default function HomePage() {
         <>
             <HomeSlider />
             <FamilyList />
-            <ClientList />
+            <div className='px-4 mx-auto max-w-7xl'><ClientList /></div>
         </>
     )
 }

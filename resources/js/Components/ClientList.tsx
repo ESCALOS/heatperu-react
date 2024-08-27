@@ -1,12 +1,10 @@
 // import Swiper core and required modules
-import { Autoplay, Navigation, Pagination, EffectFade } from 'swiper/modules';
+import { Autoplay } from 'swiper/modules';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 // Import Swiper styles
 import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
 import { clients } from '@/constants'
 
 type Props = {}
@@ -15,10 +13,9 @@ function ClientList({ }: Props) {
     return (
 
         <Swiper
-            modules={[Autoplay, Pagination]}
+            modules={[Autoplay]}
             slidesPerView={1}
             spaceBetween={10}
-            pagination={{ clickable: true }}
             breakpoints={{
                 768: {
                     slidesPerView: 3,
@@ -34,10 +31,10 @@ function ClientList({ }: Props) {
                 delay: 2000,
                 disableOnInteraction: false,
             }}
-            className='mx-auto custom-swiper max-w-7xl'
+            className='border-t border-gray-300 custom-swiper'
         >
             {
-                clients.map(({ id, name }) =>
+                clients.slice(0, 2).map(({ id, name }) =>
                     <SwiperSlide key={id} className='flex items-center justify-center text-center bg-white'>
                         <img
                             src={`/images/clients/${name}.png`}
@@ -45,7 +42,9 @@ function ClientList({ }: Props) {
                             style={{
                                 display: 'inline-block',
                                 textAlign: 'center',
-                                maxHeight: '300px'
+                                maxHeight: '300px',
+                                paddingTop: '3rem',
+                                paddingBottom: '3rem'
                             }} />
                     </SwiperSlide>
                 )
