@@ -7,8 +7,8 @@ export const navbarLinks = [
         url: "/productos",
         component: "CommodityList",
     },
-    { id: 4, title: "Proyectos", url: "/proyectos", component: "Projects" },
-    { id: 5, title: "Servicios", url: "/servicios", component: "Services" },
+    { id: 4, title: "Servicios", url: "/servicios", component: "Services" },
+    { id: 5, title: "Proyectos", url: "/proyectos", component: "Projects" },
     { id: 6, title: "Contáctenos", url: "/contactenos", component: "Contact" },
 ];
 export const homeSlides = [
@@ -37,4 +37,24 @@ export const services = [
         title: "Automatización y Repotenciación de Calderas",
         text: "Contamos con lo último en tecnología para calderas y calentadores para agua. El ser distribuidores de la división para sistemas de combustión del fabricante alemán Siemens y estadounidense Honeywell, nos pone a la vanguardia en relación con nuestros competidores. El objetivo de repotenciar y automatizar distintos procesos en equipos térmicos es el maximizar su eficiencia y en consecuencia reducir los consumos de combustible, mientras se logra una mejora operativa significativa.",
     },
+];
+
+export const clients = [
+    { id: 1, name: "alya-constructora" },
+    { id: 2, name: "arcor" },
+    { id: 3, name: "backus" },
+    { id: 4, name: "bimbo" },
+    { id: 5, name: "caldebol" },
+    { id: 6, name: "calderas" },
+    { id: 7, name: "calidda" },
+    { id: 8, name: "cortijo" },
+    { id: 9, name: "escondida" },
+    { id: 10, name: "hialpesa" },
+    { id: 11, name: "ingevap" },
+    { id: 12, name: "newmont" },
+    { id: 13, name: "siderperu" },
+    { id: 14, name: "smi-calderas" },
+    { id: 15, name: "tp" },
+    { id: 16, name: "tsc" },
+    { id: 17, name: "union" },
 ];

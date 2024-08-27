@@ -7,41 +7,51 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import { homeSlides } from '@/constants'
+import { clients } from '@/constants'
 
 type Props = {}
 
-function ClientList({}: Props) {
-  return (
+function ClientList({ }: Props) {
+    return (
 
-    <Swiper
+        <Swiper
             modules={[Autoplay, Pagination]}
-            slidesPerView={3}
-            spaceBetween={20}
+            slidesPerView={1}
+            spaceBetween={10}
             pagination={{ clickable: true }}
+            breakpoints={{
+                768: {
+                    slidesPerView: 3,
+                    spaceBetween: 20,
+                },
+                1440: {
+                    slidesPerView: 4,
+                    spaceBetween: 20,
+                },
+            }}
             loop={true}
             autoplay={{
                 delay: 2000,
                 disableOnInteraction: false,
             }}
-            className='custom-swiper'
+            className='mx-auto custom-swiper max-w-7xl'
         >
             {
-                homeSlides.map(({ id, alt }) =>
-                    <SwiperSlide key={id} className='flex justify-center text-center bg-white'>
+                clients.map(({ id, name }) =>
+                    <SwiperSlide key={id} className='flex items-center justify-center text-center bg-white'>
                         <img
-                            src={`/images/slider/Imagen${id}.png`}
-                            alt={alt}
+                            src={`/images/clients/${name}.png`}
+                            alt={name}
                             style={{
-                                objectFit: 'cover',
                                 display: 'inline-block',
-                                textAlign: 'center'
+                                textAlign: 'center',
+                                maxHeight: '300px'
                             }} />
                     </SwiperSlide>
                 )
             }
         </Swiper>
-  )
+    )
 }
 
 export default ClientList
