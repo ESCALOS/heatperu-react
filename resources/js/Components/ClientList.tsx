@@ -34,7 +34,7 @@ function ClientList({ }: Props) {
             className='border-t border-gray-300 custom-swiper'
         >
             {
-                clients.slice(0, 2).map(({ id, name }) =>
+                clients.map(({ id, name }) =>
                     <SwiperSlide key={id} className='flex items-center justify-center text-center bg-white'>
                         <img
                             src={`/images/clients/${name}.png`}
