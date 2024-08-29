@@ -6,7 +6,7 @@ type Props = {}
 function Projects({ }: Props) {
     return (
         <div>
-            <Breadcrumb title="Proyectos" />
+            <Breadcrumb title="Proyectos" imagePath="banner1.webp" />
         </div>
     )
 }

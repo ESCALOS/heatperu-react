@@ -24,10 +24,10 @@ const CommodityList = ({ commodities, category }: Props) => {
 
     return (
         <Guest title={categoryName}>
-            <Breadcrumb title={categoryName} />
+            <Breadcrumb title={categoryName} imagePath='banner3.webp' />
             <div className='container py-12'>
                 <h1 className="mb-8 text-3xl font-bold text-center">
-                    <span className='capitalize'>{categoryName}</span>
+                    <span>{categoryName}</span>
                 </h1>
                 <div className="flex flex-wrap justify-center gap-6" id='productList'>
                     {commodities.data.map(({ id, name, media }) => {

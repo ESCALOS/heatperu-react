@@ -8,7 +8,7 @@ type Props = {}
 function Contact({ }: Props) {
     return (
         <>
-            <Breadcrumb title="Contáctenos" />
+            <Breadcrumb title="Contáctenos" imagePath="banner2.webp" />
             <section className="p-8 mx-auto bg-white max-w-7xl">
                 <div className="p-8 mb-8 rounded-md bg-gray-50">
                     <div className="mb-8 space-y-2 text-center">

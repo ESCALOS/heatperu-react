@@ -26,7 +26,7 @@ function Services() {
 
     return (
         <Guest title='Servicios'>
-            <Breadcrumb title='Servicios' />
+            <Breadcrumb title='Servicios' imagePath='banner2.webp' />
             <div className='py-4 mx-auto space-y-4 max-w-7xl'>
                 {
                     services.map((service) =>
