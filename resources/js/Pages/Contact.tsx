@@ -1,5 +1,6 @@
 import Breadcrumb from "@/Components/Breadcrumb"
 import ContactForm from "@/Components/ContactForm"
+import ContactList from "@/Components/ContactList"
 import GoogleMap from "@/Components/GoogleMap"
 import GuestLayout from "@/Layouts/GuestLayout"
 
@@ -26,6 +27,7 @@ function Contact({ }: Props) {
                 </div>
             </section>
             <div className="h-[450px]"><GoogleMap /></div>
+            <ContactList />
         </>
     )
 }

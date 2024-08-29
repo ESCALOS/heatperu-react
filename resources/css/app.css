@@ -2,9 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-p::selection,
-p strong::selection,
-p b::selection {
+*::selection {
     background-color: #f04e23;
     color: white;
 }
