@@ -165,6 +165,9 @@ class CommodityResource extends ModelResource
                 ->multiple()
                 ->countFiles(5)
                 ->image(),
+            SpatieUppyFile::make('Manuales', 'comodity_guides')
+                ->countFiles(6)
+                ->allowedFileTypes(['application/pdf']),
         ];
     }
 
@@ -228,6 +231,10 @@ class CommodityResource extends ModelResource
                 ->multiple()
                 ->countFiles(5)
                 ->image(),
+            SpatieUppyFile::make('Manuales', 'comodity_guides')
+                ->multiple()
+                ->countFiles(6)
+                ->allowedFileTypes(['application/pdf']),
         ];
     }
 
@@ -251,6 +258,10 @@ class CommodityResource extends ModelResource
                 ->multiple()
                 ->countFiles(5)
                 ->image(),
+            SpatieUppyFile::make('Manuales', 'comodity_guides')
+                ->multiple()
+                ->countFiles(6)
+                ->allowedFileTypes(['application/pdf']),
         ];
     }
 
