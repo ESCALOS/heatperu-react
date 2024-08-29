@@ -3,6 +3,7 @@ import Card from '@/Components/Card';
 import Pagination from '@/Components/Pagination';
 import Guest from '@/Layouts/GuestLayout';
 import { Category, Commodity } from '@/types'
+import { getURLToSendMessageToWhatsapp } from '@/utils';
 import { BsWhatsapp } from 'react-icons/bs';
 
 type Props = {
@@ -22,6 +23,14 @@ type Props = {
 const CommodityList = ({ commodities, category }: Props) => {
     const categoryName = category?.name || 'Lista de Productos';
 
+    const handleWhatsappButton = ({ commodity }: { commodity: string }) => {
+        const url = getURLToSendMessageToWhatsapp({
+            whatsappNumber: `51967083176`,
+            message: `Hola Heat Factory, estoy interesado en consultar *${commodity}*, agradezco me puedas brindar más información.`
+        });
+        window.open(url, '_blank');
+    }
+
     return (
         <Guest title={categoryName}>
             <Breadcrumb title={categoryName} imagePath='banner3.webp' />
@@ -38,7 +47,7 @@ const CommodityList = ({ commodities, category }: Props) => {
                                 titleHeight={60}
                                 imgPath={media[0]?.original_url}
                                 footer={
-                                    <button className='button-card'>
+                                    <button className='button-card' onClick={() => handleWhatsappButton({ commodity: name })}>
                                         <BsWhatsapp size={22} className='content-center inline-block' /> Consultar ahora
                                     </button>
                                 }

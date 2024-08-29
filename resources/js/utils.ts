@@ -17,3 +17,15 @@ export const shuffleArray = <T>(array: T[]): T[] => {
 
     return array;
 };
+
+export const getURLToSendMessageToWhatsapp = ({
+    whatsappNumber,
+    message,
+}: {
+    whatsappNumber: string;
+    message: string;
+}) => {
+    return `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+        message
+    )}`;
+};
