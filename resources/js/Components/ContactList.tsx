@@ -3,7 +3,7 @@ import { LuCalendarClock } from 'react-icons/lu'
 
 function ContactList() {
     return (
-        <div className='container flex flex-wrap items-center gap-4 py-16 justify-evenly'>
+        <div className='container flex flex-wrap items-center gap-4 pb-16 justify-evenly'>
             <div className='flex flex-col items-center justify-center max-w-xs gap-4 p-4 h-30'>
                 <BiMapPin size={44} />
                 <h3 className='text-xl font-bold'>Dirección</h3>
