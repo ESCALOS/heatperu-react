@@ -47,7 +47,7 @@ function ContactUs() {
                 <li className='flex gap-2'>
                     <BiCalendar />
                     <span>Lunes a Viernes de 9:30am - 6:00pm<br />
-                        Sábados de 9:30am - 3:00pm</span>
+                        Sábados de 9:30am - 4:00pm</span>
                 </li>
             </ul>
         </ListTemplate>

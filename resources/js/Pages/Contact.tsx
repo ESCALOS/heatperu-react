@@ -25,8 +25,8 @@ function Contact({ }: Props) {
                     </div>
                     <ContactForm />
                 </div>
+                <ContactList />
             </section>
-            <ContactList />
             <GoogleMap height="450px" />
         </>
     )
