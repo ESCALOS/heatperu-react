@@ -10,14 +10,14 @@ const FamilyList = () => {
         <div className='container py-12'>
             <div className="flex flex-wrap justify-center gap-6">
                 {sortedFamilyList.map(({ id, name, slug, media }) => {
+                    const link = `/${slug}`;
                     return (
                         <Card
                             key={id}
                             title={name}
                             imgPath={media[0]?.original_url}
-                            footer={
-                                <Link href={`/${slug}`} className=' button-card'>Ver más</Link>
-                            }>
+                            link={link}
+                        >
                         </Card>
                     );
                 })}

@@ -1,8 +1,7 @@
 import Breadcrumb from '@/Components/Breadcrumb';
 import Card from '@/Components/Card';
 import Guest from '@/Layouts/GuestLayout';
-import { Category, Family, PageProps } from '@/types'
-import { Link } from '@inertiajs/react'
+import { Category, Family } from '@/types'
 
 type Props = {
     categories: Category[]
@@ -18,18 +17,14 @@ const CategoryList = ({ categories, family }: Props) => {
                     <span className='capitalize'>{family.name}</span>
                 </h1>
                 <div className="flex flex-wrap justify-center gap-6">
-                    {categories.map(({ id, name, slug, media }) => {
+                    {categories.sort((a, b) => a.name.localeCompare(b.name)).map(({ id, name, slug, media }) => {
+                        const link = `/${family.slug}/${slug}`;
                         return (
                             <Card
                                 key={id}
                                 title={name}
                                 imgPath={media[0]?.original_url}
-                                footer={
-                                    <Link href={`/${family.slug}/${slug}`} className='button-card'>
-                                        Ver más
-                                    </Link>
-                                } />
-
+                                link={link} />
                         )
                     })}
                 </div>

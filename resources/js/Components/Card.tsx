@@ -1,18 +1,18 @@
+import { Link } from '@inertiajs/react';
 import { ReactNode } from 'react'
 
 type Props = {
     title: string;
     titleHeight?: number;
     imgPath: string;
-    footer: ReactNode
+    link: string;
 }
 
-function Card({ title, titleHeight = 30, imgPath, footer }: Props) {
+function Card({ title, titleHeight = 30, imgPath, link }: Props) {
     return (
         <div
             className={`flex flex-col items-center gap-4 p-4 text-center border`}
             style={{
-                height: `${362 + titleHeight}px`,
                 width: '294px'
             }}
         >
@@ -20,7 +20,7 @@ function Card({ title, titleHeight = 30, imgPath, footer }: Props) {
                 className={`content-center inline-block overflow-hidden font-semibold text-sm`}
                 style={{ height: `${titleHeight}px` }}
             >
-                {title}
+                <span className='bg-opacity-75 line-clamp-3'>{title}</span>
             </h2>
             {imgPath ? (
                 <img
@@ -33,7 +33,9 @@ function Card({ title, titleHeight = 30, imgPath, footer }: Props) {
                     Imagen no disponible
                 </p>
             )}
-            {footer}
+            <Link href={link} className='button-card'>
+                Ver más
+            </Link>
         </div>
     )
 }

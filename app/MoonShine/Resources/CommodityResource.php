@@ -17,6 +17,7 @@ use MoonShine\ActionButtons\ActionButton;
 use MoonShine\Components\MoonShineComponent;
 use MoonShine\Fields\Field;
 use MoonShine\Fields\ID;
+use MoonShine\Fields\Markdown;
 use MoonShine\Fields\Relationships\BelongsTo;
 use MoonShine\Fields\Select;
 use MoonShine\Fields\Switcher;
@@ -251,7 +252,7 @@ class CommodityResource extends ModelResource
             Text::make('SKU', 'sku')->sortable(),
             Text::make('Nombre', 'name')->sortable(),
             Text::make('Modelo', 'model')->sortable(),
-            Text::make('Descripción', 'description'),
+            Markdown::make('Descripción', 'description'),
             Switcher::make('¿Disponible?', 'available')
                 ->updateOnPreview(),
             SpatieUppyFile::make('Imágenes', 'commodities')

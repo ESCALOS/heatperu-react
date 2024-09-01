@@ -18,7 +18,7 @@ class CommodityController extends Controller
 
     public function show($family, $category, $commodity)
     {
-        $commodity = Commodity::with(['media'])->where('slug', $commodity)->firstOrFail();
+        $commodity = Commodity::with(['media', 'brand'])->where('slug', $commodity)->firstOrFail();
 
         return Inertia::render('CommodityDetail', [
             'commodity' => $commodity,

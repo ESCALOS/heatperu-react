@@ -29,3 +29,11 @@ export const getURLToSendMessageToWhatsapp = ({
         message
     )}`;
 };
+
+export const handleWhatsappButton = ({ commodity }: { commodity: string }) => {
+    const url = getURLToSendMessageToWhatsapp({
+        whatsappNumber: `51967083176`,
+        message: `Hola Heat Factory, estoy interesado en consultar *${commodity}*, agradezco me puedas brindar más información.`,
+    });
+    window.open(url, "_blank");
+};

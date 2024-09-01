@@ -23,14 +23,6 @@ type Props = {
 const CommodityList = ({ commodities, category }: Props) => {
     const categoryName = category?.name || 'Lista de Productos';
 
-    const handleWhatsappButton = ({ commodity }: { commodity: string }) => {
-        const url = getURLToSendMessageToWhatsapp({
-            whatsappNumber: `51967083176`,
-            message: `Hola Heat Factory, estoy interesado en consultar *${commodity}*, agradezco me puedas brindar más información.`
-        });
-        window.open(url, '_blank');
-    }
-
     return (
         <Guest title={categoryName}>
             <Breadcrumb title={categoryName} imagePath='banner3.webp' />
@@ -39,18 +31,15 @@ const CommodityList = ({ commodities, category }: Props) => {
                     <span>{categoryName}</span>
                 </h1>
                 <div className="flex flex-wrap justify-center gap-6" id='productList'>
-                    {commodities.data.map(({ id, name, media }) => {
+                    {commodities.data.sort((a, b) => a.name.localeCompare(b.name)).map(({ id, name, media, slug, category }) => {
+                        const link = `/${category?.family?.name.toLocaleLowerCase()}/${category?.name.toLocaleLowerCase()}/${slug}`;
                         return (
                             <Card
                                 key={id}
                                 title={name}
                                 titleHeight={60}
+                                link={link}
                                 imgPath={media[0]?.original_url}
-                                footer={
-                                    <button className='button-card' onClick={() => handleWhatsappButton({ commodity: name })}>
-                                        <BsWhatsapp size={22} className='content-center inline-block' /> Consultar ahora
-                                    </button>
-                                }
                             />
                         )
                     })}
