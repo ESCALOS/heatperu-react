@@ -25,7 +25,7 @@ function Services() {
 
 
     return (
-        <Guest title='Servicios'>
+        <>
             <Breadcrumb title='Servicios' imagePath='banner2.webp' />
             <div className='py-4 mx-auto space-y-4 max-w-7xl'>
                 {
@@ -34,8 +34,10 @@ function Services() {
                     )
                 }
             </div>
-        </Guest>
+        </>
     )
 }
+
+Services.layout = (page: JSX.Element) => <Guest children={page} title="Servicios" />
 
 export default Services
