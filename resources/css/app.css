@@ -24,7 +24,6 @@
 }
 
 .commodity-description {
-    @apply pt-4;
     & ul {
         @apply ml-5 list-disc;
     }
