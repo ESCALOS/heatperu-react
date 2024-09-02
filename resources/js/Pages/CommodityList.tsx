@@ -4,6 +4,7 @@ import Pagination from '@/Components/Pagination';
 import Guest from '@/Layouts/GuestLayout';
 import { Category, Commodity } from '@/types'
 import { getURLToSendMessageToWhatsapp } from '@/utils';
+import { BiCheckCircle, BiXCircle } from 'react-icons/bi';
 import { BsWhatsapp } from 'react-icons/bs';
 
 type Props = {
@@ -27,11 +28,8 @@ const CommodityList = ({ commodities, category }: Props) => {
         <Guest title={categoryName}>
             <Breadcrumb title={categoryName} imagePath='banner3.webp' />
             <div className='container py-12'>
-                <h1 className="mb-8 text-3xl font-bold text-center">
-                    <span>{categoryName}</span>
-                </h1>
                 <div className="flex flex-wrap justify-center gap-6" id='productList'>
-                    {commodities.data.sort((a, b) => a.name.localeCompare(b.name)).map(({ id, name, media, slug, category }) => {
+                    {commodities.data.sort((a, b) => a.name.localeCompare(b.name)).map(({ id, sku, name, media, slug, available, category, brand }) => {
                         const link = `/${category?.family?.name.toLocaleLowerCase()}/${category?.name.toLocaleLowerCase()}/${slug}`;
                         return (
                             <Card
@@ -40,7 +38,31 @@ const CommodityList = ({ commodities, category }: Props) => {
                                 titleHeight={60}
                                 link={link}
                                 imgPath={media[0]?.original_url}
-                            />
+                            >
+                                <div className='flex flex-col justify-around w-full text-sm gap-3'>
+                                    <div>
+                                        <span className='font-bold'>SKU: </span>
+                                        {sku}
+                                    </div>
+                                    <div>
+                                        <span className='font-bold'>Marca: </span>
+                                        {brand?.name ?? 'Genérico'}
+                                    </div>
+                                    <div className='flex items-center justify-center gap-1 font-bold'>
+                                        {available ? (
+                                            <>
+                                                <BiCheckCircle className='text-green-500' size={18} />
+                                                <span className='text-green-500'>Disponible</span>
+                                            </>
+                                        ) : (
+                                            <>
+                                                <BiXCircle className='text-red-500' size={18} />
+                                                <span className='text-red-500'>No Disponible</span>
+                                            </>
+                                        )}
+                                    </div>
+                                </div>
+                            </Card>
                         )
                     })}
                 </div>

@@ -221,9 +221,14 @@ class CommodityResource extends ModelResource
             ID::make()->sortable(),
             BelongsTo::make('Clase', 'category'),
             BelongsTo::make('Marca', 'brand'),
-            Text::make('SKU', 'sku')->sortable(),
-            Text::make('Nombre', 'name')->sortable(),
-            Text::make('Modelo', 'model')->sortable(),
+            Text::make('SKU', 'sku')
+                ->sortable(),
+            Text::make('Nombre', 'name')
+                ->sortable()
+                ->unescape(),
+            Text::make('Modelo', 'model')
+                ->sortable()
+                ->unescape(),
             TinyMce::make('Descripción', 'description')
                 ->locale('es'),
             Switcher::make('¿Disponible?', 'available')

@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->foreignId('brand_id')->constrained();
             $table->string('model')->nullable();
-            $table->string('description')->nullable();
+            $table->text('description')->nullable();
             $table->boolean('available');
             $table->timestamps();
             $table->softDeletes();

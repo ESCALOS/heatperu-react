@@ -53,7 +53,8 @@ class CategoryResource extends ModelResource
         return [
             Block::make([
                 ID::make()->sortable(),
-                Text::make('Nombre', 'name')->sortable(),
+                Text::make('Nombre', 'name')->sortable()
+                    ->unescape(),
                 BelongsTo::make('Familia', 'family')->sortable(),
                 HasMany::make('Productos', 'commodities')
                     ->hideOnUpdate()

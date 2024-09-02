@@ -6,9 +6,10 @@ type Props = {
     titleHeight?: number;
     imgPath: string;
     link: string;
+    children?: ReactNode;
 }
 
-function Card({ title, titleHeight = 30, imgPath, link }: Props) {
+function Card({ title, titleHeight = 30, imgPath, link, children }: Props) {
     return (
         <div
             className={`flex flex-col items-center gap-4 p-4 text-center border`}
@@ -33,6 +34,7 @@ function Card({ title, titleHeight = 30, imgPath, link }: Props) {
                     Imagen no disponible
                 </p>
             )}
+            {children}
             <Link href={link} className='button-card'>
                 Ver más
             </Link>

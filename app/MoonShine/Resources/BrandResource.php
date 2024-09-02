@@ -49,7 +49,8 @@ class BrandResource extends ModelResource
         return [
             Block::make([
                 ID::make()->sortable(),
-                Text::make('Marca', 'name'),
+                Text::make('Marca', 'name')
+                    ->unescape(),
                 HasMany::make('Productos', 'commodities')
                     ->hideOnUpdate()
                     ->hideOnIndex()

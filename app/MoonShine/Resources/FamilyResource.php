@@ -50,7 +50,9 @@ class FamilyResource extends ModelResource
         return [
             Block::make([
                 ID::make()->sortable(),
-                Text::make('Nombre', 'name')->sortable(),
+                Text::make('Nombre', 'name')
+                    ->sortable()
+                    ->unescape(),
                 HasMany::make('Categoría', 'categories')
                     ->hideOnIndex()
                     ->hideOnUpdate()

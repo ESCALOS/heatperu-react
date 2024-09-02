@@ -9,7 +9,7 @@ class CommodityController extends Controller
 {
     public function index()
     {
-        $commodities = Commodity::with(['category.family', 'media'])->paginate(16);
+        $commodities = Commodity::with(['category.family', 'media', 'brand'])->paginate(20);
 
         return Inertia::render('CommodityList', [
             'commodities' => $commodities,
