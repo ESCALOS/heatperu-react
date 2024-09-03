@@ -85,11 +85,11 @@ const CommodityDetail = ({ commodity: { sku, name, brand, model, media, descript
             <Breadcrumb title={name} imagePath='banner3.webp' />
             <div className='container py-12'>
                 <div className='flex flex-wrap'>
-                    <div className='w-full h-52 lg:w-2/5'>
+                    <div className='w-full mb-4 h-52 lg:w-2/5 lg:mb-0'>
                         {media.length > 0 ? (
                             <CommoditySlider commodityName={name} media={media.filter((x) => x.collection_name === "commodities")} />
                         ) : (
-                            <p className="flex items-center justify-center bg-gray-100 size-80">
+                            <p className="flex items-center justify-center w-full h-full bg-gray-100">
                                 Imagen no disponible
                             </p>
                         )}
