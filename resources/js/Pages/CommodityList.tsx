@@ -31,15 +31,16 @@ const CommodityList = ({ commodities, category }: Props) => {
                 <div className="flex flex-wrap justify-center gap-6" id='productList'>
                     {commodities.data.sort((a, b) => a.name.localeCompare(b.name)).map(({ id, sku, name, media, slug, available, category, brand }) => {
                         const link = `/${category?.family?.name.toLocaleLowerCase()}/${category?.name.toLocaleLowerCase()}/${slug}`;
+                        const image = media.find(x => x.collection_name === "commodities")
                         return (
                             <Card
                                 key={id}
                                 title={name}
                                 titleHeight={60}
                                 link={link}
-                                imgPath={media[0]?.original_url}
+                                imgPath={image?.original_url}
                             >
-                                <div className='flex flex-col justify-around w-full text-sm gap-3'>
+                                <div className='flex flex-col justify-around w-full gap-3 text-sm'>
                                     <div>
                                         <span className='font-bold'>SKU: </span>
                                         {sku}

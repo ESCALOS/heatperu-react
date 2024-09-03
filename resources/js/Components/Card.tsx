@@ -4,7 +4,7 @@ import { ReactNode } from 'react'
 type Props = {
     title: string;
     titleHeight?: number;
-    imgPath: string;
+    imgPath: string | undefined;
     link: string;
     children?: ReactNode;
 }

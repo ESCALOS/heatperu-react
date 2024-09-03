@@ -1,6 +1,7 @@
 import { Commodity } from '@/types'; // Ajusta la ruta según tu estructura
 import { BsWhatsapp } from 'react-icons/bs';
 import Card from './Card';
+import { BiCheckCircle, BiXCircle } from 'react-icons/bi';
 
 type Props = {
     commodities: Commodity[]
@@ -14,20 +15,44 @@ const CommoditySearchResults = ({ commodities }: Props) => {
                 Lista de Productos
             </h1>
             {commodities.length > 0 ? (
-                <div className="grid items-center justify-center grid-cols-3 gap-6">
-                    {commodities.map(({ id, name, media }) => (
-                        <Card
-                            key={id}
-                            title={name}
-                            titleHeight={60}
-                            imgPath={media[0]?.original_url}
-                            footer={
-                                <button className='button-card'>
-                                    <BsWhatsapp size={22} className='content-center inline-block' /> Consultar ahora
-                                </button>
-                            }
-                        />
-                    ))}
+                <div className="flex flex-wrap justify-center gap-6" id='productList'>
+                    {commodities.sort((a, b) => a.name.localeCompare(b.name)).map(({ id, sku, name, media, slug, available, category, brand }) => {
+                        const link = `/${category?.family?.name.toLocaleLowerCase()}/${category?.name.toLocaleLowerCase()}/${slug}`;
+                        const image = media.find(x => x.collection_name === "commodities")
+                        return (
+                            <Card
+                                key={id}
+                                title={name}
+                                titleHeight={60}
+                                link={link}
+                                imgPath={image?.original_url}
+                            >
+                                <div className='flex flex-col justify-around w-full gap-3 text-sm'>
+                                    <div>
+                                        <span className='font-bold'>SKU: </span>
+                                        {sku}
+                                    </div>
+                                    <div>
+                                        <span className='font-bold'>Marca: </span>
+                                        {brand?.name ?? 'Genérico'}
+                                    </div>
+                                    <div className='flex items-center justify-center gap-1 font-bold'>
+                                        {available ? (
+                                            <>
+                                                <BiCheckCircle className='text-green-500' size={18} />
+                                                <span className='text-green-500'>Disponible</span>
+                                            </>
+                                        ) : (
+                                            <>
+                                                <BiXCircle className='text-red-500' size={18} />
+                                                <span className='text-red-500'>No Disponible</span>
+                                            </>
+                                        )}
+                                    </div>
+                                </div>
+                            </Card>
+                        )
+                    })}
                 </div>
             ) : (
                 <p className="text-lg text-center text-gray-500">No se encontraron productos que coincidan con tu búsqueda.</p>
