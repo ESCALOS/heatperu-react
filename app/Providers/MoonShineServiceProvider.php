@@ -8,6 +8,7 @@ use App\MoonShine\Resources\BrandResource;
 use App\MoonShine\Resources\CategoryResource;
 use App\MoonShine\Resources\CommodityResource;
 use App\MoonShine\Resources\FamilyResource;
+use App\MoonShine\Resources\ProjectResource;
 use Closure;
 use Illuminate\Http\Request;
 use MoonShine\Contracts\Resources\ResourceContract;
@@ -55,6 +56,7 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
                 ),
             ], 'heroicons.user-group')
                 ->canSee(fn (Request $request) => $request->user('moonshine')?->moonshine_user_role_id === 1),
+            MenuItem::make(__('Projects'), new ProjectResource, 'heroicons.folder'),
             MenuItem::make(__('Families'), new FamilyResource, 'heroicons.chart-pie'),
             MenuItem::make(__('Classes'), new CategoryResource, 'heroicons.tag'),
             MenuItem::make(__('Brands'), new BrandResource, 'heroicons.bookmark'),

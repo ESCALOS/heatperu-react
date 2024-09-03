@@ -234,11 +234,9 @@ class CommodityResource extends ModelResource
             Switcher::make('¿Disponible?', 'available')
                 ->default(true),
             SpatieUppyFile::make('Imágenes', 'commodities')
-                ->multiple()
                 ->countFiles(5)
                 ->image(),
             SpatieUppyFile::make('Manuales', 'comodity_guides')
-                ->multiple()
                 ->countFiles(6)
                 ->allowedFileTypes(['application/pdf']),
         ];
