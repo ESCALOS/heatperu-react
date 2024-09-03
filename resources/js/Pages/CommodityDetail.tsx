@@ -52,22 +52,29 @@ function CommodityData({ name, brand, model, sku, available }: { name: string, b
 }
 
 function ManualSection({ media }: { media: Media[] }) {
+    const manuals = media.filter((x) => x.collection_name === "comodity_guides");
     return (
         <div className='py-4 my-4 border-gray-200 border-y'>
-            <h2 className="mb-4 text-xl font-bold">Manuales</h2>
-            <ul className='grid grid-cols-1 gap-2 lg:grid-cols-2'>
-                {media.filter((x) => x.collection_name === "comodity_guides").map((manual) =>
-                    <li key={manual.id}>
-                        <a download={`${manual.name}.pdf`} href={manual.original_url}
-                            className="inline-flex items-center gap-1 text-lg text-secondary-500 hover:border-b border-primary-500 hover:font-bold"
-                            title='Descargar Manual'
-                        >
-                            <StreamlineConvertPdf2 className='text-primary-500' fontSize={17} />
-                            <span>{manual.name} </span>
-                        </a>
-                    </li>
-                )}
-            </ul>
+            <h2 className="text-xl font-bold">
+                {manuals.length > 0 ? 'Manuales' : 'Manuales no disponibles'}
+            </h2>
+            {
+                manuals.length > 0 && (
+                    <ul className='grid grid-cols-1 gap-2 mt-4 lg:grid-cols-2'>
+                        {manuals.map((manual) =>
+                            <li key={manual.id}>
+                                <a download={`${manual.name}.pdf`} href={manual.original_url}
+                                    className="inline-flex items-center gap-1 text-lg text-secondary-500 hover:border-b border-primary-500 hover:font-bold"
+                                    title='Descargar Manual'
+                                >
+                                    <StreamlineConvertPdf2 className='text-primary-500' fontSize={17} />
+                                    <span>{manual.name} </span>
+                                </a>
+                            </li>
+                        )}
+                    </ul>
+                )
+            }
         </div>
     )
 }
