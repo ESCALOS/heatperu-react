@@ -13,7 +13,7 @@ use MoonShine\Decorations\Block;
 use MoonShine\Fields\Date;
 use MoonShine\Fields\ID;
 use MoonShine\Fields\Text;
-use MoonShine\Fields\Textarea;
+use MoonShine\Fields\TinyMce;
 use MoonShine\Resources\ModelResource;
 
 /**
@@ -37,7 +37,7 @@ class ProjectResource extends ModelResource
                     ->sortable(),
                 Date::make('Fecha', 'date')
                     ->format('d/m/Y'),
-                Textarea::make('Descripción', 'description')
+                TinyMce::make('Descripción', 'description')
                     ->hideOnIndex(),
                 SpatieUppyFile::make('Imágenes', 'projects')
                     ->image()

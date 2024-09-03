@@ -1,4 +1,5 @@
 import Breadcrumb from "@/Components/Breadcrumb"
+import PhotoGallery from "@/Components/PhotoGallery"
 import GuestLayout from "@/Layouts/GuestLayout"
 import { Project } from "@/types"
 import { dateFormatter } from "@/utils"
@@ -13,19 +14,18 @@ function Projects({ projects }: Props) {
         <div>
             <Breadcrumb title="Proyectos" imagePath="banner1.webp" />
             <div className="container px-4 py-12 mx-auto">
-                <div className="flex flex-wrap justify-center">
+                <div className="flex flex-wrap justify-center gap-4">
                     {
                         projects.map(({ id, name, description, date, media }) => {
                             const formattedDate = new Date(date);
                             return (
-                                <div key={id} className="w-full p-4 md:w-1/2 xl:w- 1/3">
+                                <div key={id} className="w-full">
                                     <div className="p-8 bg-white rounded-lg shadow-md">
-                                        <h2 className="mb-4 text-lg font-bold">{name}</h2>
-                                        <p className="mb-4 text-sm text-gray-600">{description}</p>
-                                        <p className="mb-4 text-sm text-gray-600">{dateFormatter.format(formattedDate)}</p>
-                                        <img src={media[0].original_url} alt={name} className="object-cover object-top w-full mb-4 rounded-lg h-96" />
+                                        <h2 className="mb-2 text-2xl font-bold">{name}</h2>
+                                        <p className="text-sm font-bold text-primary-500">{dateFormatter.format(formattedDate)}</p>
+                                        {description && <div className='my-2 commodity-description' dangerouslySetInnerHTML={{ __html: description }}></div>}
+                                        <PhotoGallery title={name} media={media} />
                                     </div>
-
                                 </div>
                             )
                         })

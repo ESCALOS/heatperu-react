@@ -23,14 +23,15 @@ const Breadcrumb = ({ title, imagePath }: BreadcrumbProps) => {
                     {pathnames.map((name, index) => {
                         const routeTo = `/${pathnames.slice(0, index + 1).join('/')}`;
                         const isLast = index === pathnames.length - 1;
+                        const decodedName = decodeURIComponent(name);
                         if (index === 2) return;
                         return isLast ? (
                             <span key={index} className="text-gray-300">
-                                {' > '} {name.charAt(0).toUpperCase() + name.slice(1)}
+                                {' > '} {decodedName.charAt(0).toUpperCase() + decodedName.slice(1)}
                             </span>
                         ) : (
                             <Link key={index} href={routeTo} className="hover:underline">
-                                {' > '} {name.charAt(0).toUpperCase() + name.slice(1)}
+                                {' > '} {decodedName.charAt(0).toUpperCase() + decodedName.slice(1)}
                             </Link>
                         );
                     })}
