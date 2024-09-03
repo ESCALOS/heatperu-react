@@ -1,5 +1,4 @@
-import { Commodity } from '@/types'; // Ajusta la ruta según tu estructura
-import { BsWhatsapp } from 'react-icons/bs';
+import { Commodity } from '@/types';
 import Card from './Card';
 import { BiCheckCircle, BiXCircle } from 'react-icons/bi';
 
