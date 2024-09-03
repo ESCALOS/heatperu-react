@@ -5,6 +5,7 @@ use App\Http\Controllers\CommodityController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\FamilyController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProjectController;
 use Illuminate\Support\Facades\Route;
 
 // Route::get('/', function () {
@@ -21,7 +22,7 @@ Route::get('/productos', [CommodityController::class, 'index'])->name('commodity
 
 Route::inertia('/nosotros', 'About')->name('about');
 Route::inertia('/servicios', 'Services')->name('services');
-Route::inertia('/proyectos', 'Projects')->name('projects');
+Route::get('/proyectos', [ProjectController::class, 'index'])->name('projects');
 Route::inertia('/contactenos', 'Contact')->name('contact');
 
 Route::post('/contactenos', ContactController::class)->name('contact.mail');

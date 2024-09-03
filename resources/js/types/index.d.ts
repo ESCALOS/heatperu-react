@@ -82,3 +82,14 @@ export interface Commodity {
     updated_at: string;
     media: Media[];
 }
+
+export interface Project {
+    id: number;
+    name: string;
+    slug: string;
+    description?: string;
+    date: string;
+    created_at: string;
+    updated_at: string;
+    media: Media[];
+}

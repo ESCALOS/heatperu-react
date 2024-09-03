@@ -7,6 +7,7 @@ namespace App\MoonShine\Resources;
 use App\Models\Project;
 use GianTiaga\MoonshineFile\Fields\SpatieUppyFile;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Validation\Rule;
 use MoonShine\Components\MoonShineComponent;
 use MoonShine\Decorations\Block;
 use MoonShine\Fields\Date;
@@ -32,7 +33,8 @@ class ProjectResource extends ModelResource
         return [
             Block::make([
                 ID::make()->sortable(),
-                Text::make('Nombre', 'name')->sortable(),
+                Text::make('Nombre', 'name')
+                    ->sortable(),
                 Date::make('Fecha', 'date')
                     ->format('d/m/Y'),
                 Textarea::make('Descripción', 'description')
@@ -52,6 +54,8 @@ class ProjectResource extends ModelResource
      */
     public function rules(Model $item): array
     {
-        return [];
+        return [
+            'name' => ['required', 'string', Rule::unique('projects')->ignore($item->id)],
+        ];
     }
 }

@@ -43,3 +43,9 @@ export function decodeHtml(html: string): string {
     const doc = parser.parseFromString(html, "text/html");
     return doc.documentElement.textContent || "";
 }
+
+export const dateFormatter = new Intl.DateTimeFormat("es-ES", {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+});
