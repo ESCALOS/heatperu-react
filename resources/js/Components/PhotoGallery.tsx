@@ -65,8 +65,19 @@ const PhotoGallery: React.FC<PhotoGalleryProps> = ({ title, media }) => {
     };
 
     return (
-        <div>
-            <img src={media[0].original_url} alt={title} onClick={openGallery} className='w-[720px]' />
+        <div onClick={openGallery} className='flex gap-4 h-52 md:h-80'>
+            <div className='md:w-1/2'>
+                <img src={media[0].original_url} alt={title} className='object-cover w-full h-full rounded-md' />
+            </div>
+            <div className="hidden w-1/2 grid-cols-2 grid-rows-2 gap-4 md:grid">
+                {
+                    media.slice(1, 5).map((image) =>
+                        <div key={image.id}>
+                            <img src={image.original_url} alt={title} className='object-cover w-full h-full rounded-md' />
+                        </div>
+                    )
+                }
+            </div>
         </div>
     );
 };

@@ -17,7 +17,7 @@ export default function ForgotPassword({ status }: { status?: string }) {
     };
 
     return (
-        <GuestLayout>
+        <GuestLayout title='Olvidé mi contraseña'>
             <Head title="Forgot Password" />
 
             <div className="mb-4 text-sm text-gray-600 dark:text-gray-400">
@@ -25,7 +25,7 @@ export default function ForgotPassword({ status }: { status?: string }) {
                 reset link that will allow you to choose a new one.
             </div>
 
-            {status && <div className="mb-4 font-medium text-sm text-green-600 dark:text-green-400">{status}</div>}
+            {status && <div className="mb-4 text-sm font-medium text-green-600 dark:text-green-400">{status}</div>}
 
             <form onSubmit={submit}>
                 <TextInput
@@ -33,7 +33,7 @@ export default function ForgotPassword({ status }: { status?: string }) {
                     type="email"
                     name="email"
                     value={data.email}
-                    className="mt-1 block w-full"
+                    className="block w-full mt-1"
                     isFocused={true}
                     onChange={(e) => setData('email', e.target.value)}
                 />
