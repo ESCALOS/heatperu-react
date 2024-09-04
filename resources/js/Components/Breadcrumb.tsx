@@ -1,3 +1,4 @@
+import { decodeSlug } from '@/utils';
 import { Link, usePage } from '@inertiajs/react';
 
 type BreadcrumbProps = {
@@ -23,15 +24,15 @@ const Breadcrumb = ({ title, imagePath }: BreadcrumbProps) => {
                     {pathnames.map((name, index) => {
                         const routeTo = `/${pathnames.slice(0, index + 1).join('/')}`;
                         const isLast = index === pathnames.length - 1;
-                        const decodedName = decodeURIComponent(name);
+                        const routeName = decodeSlug(name);
                         if (index === 2) return;
                         return isLast ? (
                             <span key={index} className="text-gray-300">
-                                {' > '} {decodedName.charAt(0).toUpperCase() + decodedName.slice(1)}
+                                {' > '} {routeName}
                             </span>
                         ) : (
                             <Link key={index} href={routeTo} className="hover:underline">
-                                {' > '} {decodedName.charAt(0).toUpperCase() + decodedName.slice(1)}
+                                {' > '} {routeName}
                             </Link>
                         );
                     })}

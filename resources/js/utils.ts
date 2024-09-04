@@ -49,3 +49,12 @@ export const dateFormatter = new Intl.DateTimeFormat("es-ES", {
     month: "2-digit",
     year: "numeric",
 });
+
+export const decodeSlug = (slug: string): string => {
+    const withSpaces = slug.replace(/-/g, " ");
+
+    const capitalized =
+        withSpaces.charAt(0).toUpperCase() + withSpaces.slice(1);
+
+    return capitalized;
+};

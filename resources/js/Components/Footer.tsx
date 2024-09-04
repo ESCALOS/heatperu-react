@@ -38,7 +38,7 @@ function ContactUs() {
                 </li>
                 <li className='flex gap-2'>
                     <BiMobile />
-                    <a href="tel:961749562">961-749-562</a>
+                    <a href="tel:51967083176">+51 967-083-176</a>
                 </li>
                 <li className='flex gap-2'>
                     <BiEnvelope />
