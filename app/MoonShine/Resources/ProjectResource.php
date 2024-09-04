@@ -56,6 +56,7 @@ class ProjectResource extends ModelResource
     {
         return [
             'name' => ['required', 'string', Rule::unique('projects')->ignore($item->id)],
+            'date' => ['required', 'date'],
         ];
     }
 }

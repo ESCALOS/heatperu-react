@@ -8,6 +8,7 @@ use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Commodity;
 use App\Models\Family;
+use App\MoonShine\Handlers\CommodityImportHandler;
 use GianTiaga\MoonshineFile\Fields\SpatieUppyFile;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
@@ -124,6 +125,7 @@ class CommodityResource extends ModelResource
 
     public function beforeImported(Model $item): Commodity
     {
+
         $commodity = new Commodity;
         $commodity->sku = $item->sku;
         $commodity->name = $item->name;
@@ -138,7 +140,7 @@ class CommodityResource extends ModelResource
 
     public function import(): ?ImportHandler
     {
-        return ImportHandler::make('Importar')->queue()->deleteAfter();
+        return CommodityImportHandler::make('Importar')->deleteAfter();
     }
 
     public function redirectAfterSave(): string
@@ -254,7 +256,7 @@ class CommodityResource extends ModelResource
             BelongsTo::make('Marca', 'brand'),
             Text::make('SKU', 'sku')->sortable(),
             Text::make('Nombre', 'name')->sortable(),
-            Text::make('Modelo', 'model')->sortable(),
+            Text::make('Modelo', 'model'),
             Markdown::make('Descripción', 'description'),
             Switcher::make('¿Disponible?', 'available')
                 ->updateOnPreview(),

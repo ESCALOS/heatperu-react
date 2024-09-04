@@ -1,7 +1,7 @@
 import { PageProps } from '@/types';
 import { shuffleArray } from '@/utils';
 import { usePage } from '@inertiajs/react';
-import { ReactNode, useId } from 'react';
+import { FormEvent, ReactNode, useId } from 'react';
 import { BiCalendar, BiEnvelope, BiLogoFacebook, BiLogoInstagram, BiLogoLinkedin, BiMapPin, BiMobile, BiPaperPlane } from 'react-icons/bi';
 
 function ListTemplate({ title, children }: { title: string, children: ReactNode }) {
@@ -56,6 +56,12 @@ function ContactUs() {
 
 function Subscribe() {
     const subscribeId = useId();
+
+    const handleSuscribe = (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        alert('Suscrito');
+    }
+
     return (
         <ListTemplate title='Síguenos'>
             <ul className='flex gap-4'>
@@ -76,7 +82,7 @@ function Subscribe() {
                 </li>
             </ul>
             <h2 className='my-6 mb-4 text-2xl font-bold text-white'>Suscríbete</h2>
-            <form action="/" className='flex'>
+            <form onSubmit={handleSuscribe} className='flex'>
                 <input required type="email" placeholder='Email' id={subscribeId} name='email' className='w-full p-4 text-sm text-gray-700 border-gray-400 rounded-l-md focus:ring focus:ring-transparent focus:border-gray-400' />
                 <button className='px-4 py-2 text-white bg-primary-500 rounded-r-md'><BiPaperPlane size={24} /></button>
             </form>
