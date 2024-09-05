@@ -65,7 +65,7 @@ const PhotoGallery: React.FC<PhotoGalleryProps> = ({ title, media }) => {
     };
 
     return (
-        <div onClick={openGallery} className='flex gap-4 h-52 md:h-80'>
+        <div onClick={openGallery} className='flex gap-4 h-52 md:h-80 cursor-zoom-in'>
             <div className='md:w-1/2'>
                 <img src={media[0].original_url} alt={title} className='object-cover w-full h-full rounded-md' />
             </div>
