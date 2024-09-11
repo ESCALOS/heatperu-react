@@ -19,8 +19,8 @@ function FamilyList() {
     return (
         <ListTemplate title='Categorías'>
             <ul className='flex flex-col gap-4 text-gray-200 capitalize'>
-                {shuffledFamilyList.slice(0, 5).map(family => (
-                    <li key={family.id}><a href="/">{family.name.toLocaleLowerCase()}</a></li>
+                {shuffledFamilyList.slice(0, 5).map(({ id, name, slug }) => (
+                    <li key={id}><a href={`/${slug}`}>{name.toLocaleLowerCase()}</a></li>
                 ))}
             </ul>
         </ListTemplate>
