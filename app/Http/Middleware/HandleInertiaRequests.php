@@ -5,7 +5,6 @@ namespace App\Http\Middleware;
 use App\Models\Family;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
-use Tighten\Ziggy\Ziggy;
 
 class HandleInertiaRequests extends Middleware
 {
@@ -33,14 +32,7 @@ class HandleInertiaRequests extends Middleware
     {
         return [
             ...parent::share($request),
-            'auth' => [
-                'user' => $request->user(),
-            ],
-            'ziggy' => fn () => [
-                ...(new Ziggy)->toArray(),
-                'location' => $request->url(),
-            ],
-            'familyList' => Family::with(['media'])->get(),
+            'familyList' => Family::with(['media'])->orderBy('name', 'asc')->get(),
         ];
     }
 }

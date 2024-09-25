@@ -1,5 +1,7 @@
 export const shuffleArray = <T>(array: T[]): T[] => {
-    let currentIndex = array.length;
+    // Hacer una copia superficial del array original
+    const arrayCopy = [...array];
+    let currentIndex = arrayCopy.length;
     let temporaryValue: T;
     let randomIndex: number;
 
@@ -10,12 +12,12 @@ export const shuffleArray = <T>(array: T[]): T[] => {
         currentIndex--;
 
         // Intercambiarlo con el elemento en la posición actual
-        temporaryValue = array[currentIndex];
-        array[currentIndex] = array[randomIndex];
-        array[randomIndex] = temporaryValue;
+        temporaryValue = arrayCopy[currentIndex];
+        arrayCopy[currentIndex] = arrayCopy[randomIndex];
+        arrayCopy[randomIndex] = temporaryValue;
     }
 
-    return array;
+    return arrayCopy; // Retorna la copia mezclada
 };
 
 export const getURLToSendMessageToWhatsapp = ({

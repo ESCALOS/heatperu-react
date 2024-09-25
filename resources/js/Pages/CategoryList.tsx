@@ -17,7 +17,7 @@ const CategoryList = ({ categories, family }: Props) => {
                     <span className='capitalize'>{family.name}</span>
                 </h1>
                 <div className="flex flex-wrap justify-center gap-6">
-                    {categories.sort((a, b) => a.name.localeCompare(b.name)).map(({ id, name, slug, media }) => {
+                    {categories.map(({ id, name, slug, media }) => {
                         const link = `/${family.slug}/${slug}`;
                         return (
                             <Card

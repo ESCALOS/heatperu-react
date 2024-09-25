@@ -15,7 +15,7 @@ const CommoditySearchResults = ({ commodities }: Props) => {
             </h1>
             {commodities.length > 0 ? (
                 <div className="flex flex-wrap justify-center gap-6" id='productList'>
-                    {commodities.sort((a, b) => a.name.localeCompare(b.name)).map(({ id, sku, name, media, slug, available, category, brand }) => {
+                    {commodities.map(({ id, sku, name, media, slug, available, category, brand }) => {
                         const link = `/${category?.family?.name.toLocaleLowerCase()}/${category?.name.toLocaleLowerCase()}/${slug}`;
                         const image = media.find(x => x.collection_name === "commodities")
                         return (

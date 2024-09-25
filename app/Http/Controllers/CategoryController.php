@@ -11,7 +11,7 @@ class CategoryController extends Controller
     public function show(string $family, string $category)
     {
         $categoryModel = Category::where('slug', $category)->firstOrFail();
-        $commodities = Commodity::with(['category.family', 'media', 'brand'])->where('category_id', $categoryModel->id)->paginate(20);
+        $commodities = Commodity::with(['category.family', 'media', 'brand'])->where('category_id', $categoryModel->id)->orderBy('name', 'asc')->paginate(20);
 
         return Inertia::render('CommodityList', [
             'category' => $categoryModel,

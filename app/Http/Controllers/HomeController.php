@@ -18,6 +18,7 @@ class HomeController extends Controller
                 ->orWhereHas('brand', function ($q) use ($search) {
                     $q->where('name', 'like', '%'.$search.'%');
                 })
+                ->orderBy('name', 'asc')
                 ->get();
         }
 
