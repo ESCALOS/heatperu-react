@@ -9,7 +9,7 @@ class ProjectController extends Controller
 {
     public function index()
     {
-        $projects = Project::with(['media'])->latest()->get();
+        $projects = Project::with(['media'])->orderBy('date', 'desc')->get();
 
         return Inertia::render('Projects', [
             'projects' => $projects,
