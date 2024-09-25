@@ -14,7 +14,10 @@ class HomeController extends Controller
         $commodities = null;
         if ($search) {
             $commodities = Commodity::with(['category.family', 'media', 'brand'])
-                ->where('name', 'like', '%'.$search.'%')
+                ->where(function ($query) use ($search) {
+                    $query->where('name', 'like', '%'.$search.'%')
+                        ->orWhere('sku', $search);
+                })
                 ->orWhereHas('brand', function ($q) use ($search) {
                     $q->where('name', 'like', '%'.$search.'%');
                 })
