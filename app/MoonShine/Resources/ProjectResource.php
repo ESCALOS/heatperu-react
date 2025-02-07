@@ -23,7 +23,7 @@ class ProjectResource extends ModelResource
 {
     protected string $model = Project::class;
 
-    protected string $title = 'Projects';
+    protected string $title = 'Projectos';
 
     /**
      * @return list<MoonShineComponent|Field>
