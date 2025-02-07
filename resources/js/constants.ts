@@ -13,12 +13,14 @@ export const navbarLinks = [
 ];
 export const homeSlides = [
     { id: 1, alt: "Productos Marca Baite" },
-    { id: 2, alt: "Productos Marca Power Flame Inc." },
-    { id: 3, alt: "Productos Marca Suntec Industries" },
-    { id: 4, alt: "Productos Marca MacDonnell & Miller" },
-    { id: 5, alt: "Productos Marca Beckett" },
-    { id: 6, alt: "Productos Marca Wayne Combustions Systems" },
-    { id: 7, alt: "Productos Marca Honeywell" },
+    { id: 2, alt: "Productos Marca Belgas" },
+    { id: 3, alt: "Productos Marca VMV" },
+    { id: 4, alt: "Productos Marca Power Flame Inc." },
+    { id: 5, alt: "Productos Marca Suntec Industries" },
+    { id: 6, alt: "Productos Marca MacDonnell & Miller" },
+    { id: 7, alt: "Productos Marca Beckett" },
+    { id: 8, alt: "Productos Marca Wayne Combustions Systems" },
+    { id: 9, alt: "Productos Marca Honeywell" },
 ];
 
 export const services = [
@@ -56,5 +58,10 @@ export const clients = [
     { id: 14, name: "smi-calderas" },
     { id: 15, name: "tp" },
     { id: 16, name: "tsc" },
-    { id: 17, name: "union" },
+    { id: 17, name: "cosapi" },
+    { id: 18, name: "danper" },
+    { id: 19, name: "condugas" },
+    { id: 20, name: "manservice" },
+    { id: 21, name: "omatt" },
+    { id: 22, name: "tecavi" },
 ];
