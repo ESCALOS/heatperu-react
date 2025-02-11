@@ -1,5 +1,5 @@
-import { decodeSlug } from '@/utils';
-import { Link, usePage } from '@inertiajs/react';
+import { decodeSlug } from "@/utils";
+import { Link, usePage } from "@inertiajs/react";
 
 type BreadcrumbProps = {
     title: string;
@@ -9,30 +9,43 @@ type BreadcrumbProps = {
 const Breadcrumb = ({ title, imagePath }: BreadcrumbProps) => {
     const { url } = usePage();
 
-    const pathnames = url.split('?')[0].split('/').filter((x) => x);
+    const pathnames = url
+        .split("?")[0]
+        .split("/")
+        .filter((x) => x);
 
     return (
         <div
             className="relative flex items-center justify-center object-cover text-white bg-center bg-cover h-[346px]"
-            style={{ backgroundImage: `url('/images/breadcrumb/${imagePath}')` }}
+            style={{
+                backgroundImage: `url('/images/breadcrumb/${imagePath}')`,
+            }}
         >
             <div className="absolute inset-0 bg-black opacity-50"></div>
             <div className="relative z-10 flex flex-col items-center px-4">
                 <h1 className="text-3xl font-bold text-center">{title}</h1>
                 <nav className="flex mt-2 space-x-2 text-sm">
-                    <Link href="/" className="hover:underline">Inicio</Link>
+                    <Link href="/" className="hover:underline">
+                        Inicio
+                    </Link>
                     {pathnames.map((name, index) => {
-                        const routeTo = `/${pathnames.slice(0, index + 1).join('/')}`;
+                        const routeTo = `/${pathnames
+                            .slice(0, index + 1)
+                            .join("/")}`;
                         const isLast = index === pathnames.length - 1;
                         const routeName = decodeSlug(name);
                         if (index === 2) return;
                         return isLast ? (
                             <span key={index} className="text-gray-300">
-                                {' > '} {routeName}
+                                {" > "} {routeName}
                             </span>
                         ) : (
-                            <Link key={index} href={routeTo} className="hover:underline">
-                                {' > '} {routeName}
+                            <Link
+                                key={index}
+                                href={routeTo}
+                                className="hover:underline"
+                            >
+                                {" > "} {routeName}
                             </Link>
                         );
                     })}

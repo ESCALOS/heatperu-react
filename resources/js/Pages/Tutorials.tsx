@@ -1,24 +1,20 @@
 import Breadcrumb from "@/Components/Breadcrumb";
 import Card from "@/Components/Card";
-import Guest from "@/Layouts/GuestLayout";
-import { Category, Family } from "@/types";
+import GuestLayout from "@/Layouts/GuestLayout";
+import { TutorialCategory } from "@/types";
 
 type Props = {
-    categories: Category[];
-    family: Family;
+    categories: TutorialCategory[];
 };
 
-const CategoryList = ({ categories, family }: Props) => {
+function Tutorials({ categories }: Props) {
     return (
-        <Guest title={family.name}>
-            <Breadcrumb title={family.name} imagePath="banner3.webp" />
+        <>
+            <Breadcrumb title="Tutoriales" imagePath="banner3.webp" />
             <div className="container py-12">
-                <h1 className="mb-8 text-3xl font-bold text-center">
-                    <span className="capitalize">{family.name}</span>
-                </h1>
                 <div className="flex flex-wrap justify-center gap-6">
                     {categories.map(({ id, name, slug, media }) => {
-                        const link = `/${family.slug}/${slug}`;
+                        const link = `/tutoriales/${slug}`;
                         return (
                             <Card
                                 key={id}
@@ -30,8 +26,12 @@ const CategoryList = ({ categories, family }: Props) => {
                     })}
                 </div>
             </div>
-        </Guest>
+        </>
     );
-};
+}
 
-export default CategoryList;
+Tutorials.layout = (page: JSX.Element) => (
+    <GuestLayout children={page} title="Tutoriales" />
+);
+
+export default Tutorials;

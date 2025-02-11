@@ -93,3 +93,24 @@ export interface Project {
     updated_at: string;
     media: Media[];
 }
+
+export interface TutorialCategory {
+    id: number;
+    name: string;
+    slug: string;
+    created_at: string;
+    updated_at: string;
+    media: Media[];
+}
+
+export interface Tutorial {
+    id: number;
+    tutorial_category_id: number;
+    name: string;
+    slug: string;
+    description?: string;
+    date: string;
+    created_at: string;
+    updated_at: string;
+    url_video: string;
+}

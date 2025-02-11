@@ -9,7 +9,8 @@ export const navbarLinks = [
     },
     { id: 4, title: "Servicios", url: "/servicios", component: "Services" },
     { id: 5, title: "Proyectos", url: "/proyectos", component: "Projects" },
-    { id: 6, title: "Contáctenos", url: "/contactenos", component: "Contact" },
+    { id: 6, title: "Tutoriales", url: "/tutoriales", component: "Tutorials" },
+    { id: 7, title: "Contáctenos", url: "/contactenos", component: "Contact" },
 ];
 export const homeSlides = [
     { id: 1, alt: "Productos Marca Baite" },

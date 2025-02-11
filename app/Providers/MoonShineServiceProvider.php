@@ -9,6 +9,8 @@ use App\MoonShine\Resources\CategoryResource;
 use App\MoonShine\Resources\CommodityResource;
 use App\MoonShine\Resources\FamilyResource;
 use App\MoonShine\Resources\ProjectResource;
+use App\MoonShine\Resources\TutorialCategoryResource;
+use App\MoonShine\Resources\TutorialResource;
 use Closure;
 use Illuminate\Http\Request;
 use MoonShine\Contracts\Resources\ResourceContract;
@@ -61,6 +63,18 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
             MenuItem::make(__('Classes'), new CategoryResource, 'heroicons.tag'),
             MenuItem::make(__('Brands'), new BrandResource, 'heroicons.bookmark'),
             MenuItem::make(__('Commodities'), new CommodityResource, 'heroicons.cube'),
+            MenuGroup::make(static fn () => __('Tutorials'), [
+                MenuItem::make(
+                    static fn () => __('Categories'),
+                    new TutorialCategoryResource,
+                    'heroicons.tag'
+                ),
+                MenuItem::make(
+                    static fn () => __('List'),
+                    new TutorialResource,
+                    'heroicons.tag'
+                ),
+            ], 'heroicons.video-camera'),
         ];
     }
 

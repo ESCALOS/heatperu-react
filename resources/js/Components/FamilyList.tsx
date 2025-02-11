@@ -1,12 +1,12 @@
-import { PageProps } from '@/types';
-import { usePage } from '@inertiajs/react';
-import Card from './Card';
+import { PageProps } from "@/types";
+import { usePage } from "@inertiajs/react";
+import Card from "./Card";
 
 const FamilyList = () => {
-    const { familyList } = usePage<PageProps>().props;
+    const { familyList = [] } = usePage<PageProps>().props;
 
     return (
-        <div className='container py-12'>
+        <div className="container py-12">
             <div className="flex flex-wrap justify-center gap-6">
                 {familyList.map(({ id, name, slug, media }) => {
                     const link = `/${slug}`;
@@ -16,8 +16,7 @@ const FamilyList = () => {
                             title={name}
                             imgPath={media[0]?.original_url}
                             link={link}
-                        >
-                        </Card>
+                        ></Card>
                     );
                 })}
             </div>
