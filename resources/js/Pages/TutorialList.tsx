@@ -12,7 +12,7 @@ type Props = {
 
 function TutorialList({ category, tutorials }: Props) {
     return (
-        <div>
+        <GuestLayout title="Tutoriales">
             <Breadcrumb title={category.name} imagePath="banner1.webp" />
             <div className="container px-4 py-12 mx-auto">
                 <div className="flex flex-wrap justify-center gap-4">
@@ -51,12 +51,8 @@ function TutorialList({ category, tutorials }: Props) {
                     )}
                 </div>
             </div>
-        </div>
+        </GuestLayout>
     );
 }
-
-TutorialList.layout = (page: JSX.Element) => (
-    <GuestLayout children={page} title="Tutoriales" />
-);
 
 export default TutorialList;

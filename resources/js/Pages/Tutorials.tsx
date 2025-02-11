@@ -9,7 +9,7 @@ type Props = {
 
 function Tutorials({ categories }: Props) {
     return (
-        <>
+        <GuestLayout title="Tutoriales">
             <Breadcrumb title="Tutoriales" imagePath="banner3.webp" />
             <div className="container py-12">
                 <div className="flex flex-wrap justify-center gap-6">
@@ -26,12 +26,8 @@ function Tutorials({ categories }: Props) {
                     })}
                 </div>
             </div>
-        </>
+        </GuestLayout>
     );
 }
-
-Tutorials.layout = (page: JSX.Element) => (
-    <GuestLayout children={page} title="Tutoriales" />
-);
 
 export default Tutorials;

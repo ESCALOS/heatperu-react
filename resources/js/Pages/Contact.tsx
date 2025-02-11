@@ -1,14 +1,14 @@
-import Breadcrumb from "@/Components/Breadcrumb"
-import ContactForm from "@/Components/ContactForm"
-import ContactList from "@/Components/ContactList"
-import GoogleMap from "@/Components/GoogleMap"
-import GuestLayout from "@/Layouts/GuestLayout"
+import Breadcrumb from "@/Components/Breadcrumb";
+import ContactForm from "@/Components/ContactForm";
+import ContactList from "@/Components/ContactList";
+import GoogleMap from "@/Components/GoogleMap";
+import GuestLayout from "@/Layouts/GuestLayout";
 
-type Props = {}
+type Props = {};
 
-function Contact({ }: Props) {
+function Contact({}: Props) {
     return (
-        <>
+        <GuestLayout title="Contáctenos">
             <Breadcrumb title="Contáctenos" imagePath="banner2.webp" />
             <section className="p-8 mx-auto bg-white max-w-7xl">
                 <div className="p-8 mb-8 rounded-md bg-gray-50">
@@ -28,10 +28,8 @@ function Contact({ }: Props) {
                 <ContactList />
             </section>
             <GoogleMap height="450px" />
-        </>
-    )
+        </GuestLayout>
+    );
 }
 
-Contact.layout = (page: JSX.Element) => <GuestLayout children={page} title="Contáctenos" />
-
-export default Contact
+export default Contact;
