@@ -34,7 +34,8 @@ class ProjectResource extends ModelResource
             Block::make([
                 ID::make()->sortable(),
                 Text::make('Nombre', 'name')
-                    ->sortable(),
+                    ->sortable()
+                    ->unescape(),
                 Date::make('Fecha', 'date')
                     ->format('d/m/Y'),
                 TinyMce::make('Descripción', 'description')

@@ -107,9 +107,9 @@ export interface Tutorial {
     id: number;
     tutorial_category_id: number;
     name: string;
+    subtitle: string;
     slug: string;
     description?: string;
-    date: string;
     created_at: string;
     updated_at: string;
     url_video: string;

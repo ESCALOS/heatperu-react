@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('tutorial_category_id')->constrained();
             $table->string('name')->unique();
-            $table->date('date');
+            $table->string('subtitle');
             $table->text('description');
             $table->string('url_video');
             $table->string('slug')->unique();

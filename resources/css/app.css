@@ -28,3 +28,13 @@
         @apply ml-5 list-disc;
     }
 }
+
+.tutorial-description {
+    & ul {
+        @apply ml-5 list-disc;
+    }
+
+    & p {
+        @apply font-light;
+    }
+}

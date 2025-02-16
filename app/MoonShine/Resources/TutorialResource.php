@@ -7,12 +7,12 @@ namespace App\MoonShine\Resources;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Tutorial;
 use App\Models\TutorialCategory;
+use Illuminate\Validation\Rule;
 use MoonShine\Resources\ModelResource;
 use MoonShine\Decorations\Block;
 use MoonShine\Fields\ID;
 use MoonShine\Fields\Field;
 use MoonShine\Components\MoonShineComponent;
-use MoonShine\Fields\Date;
 use MoonShine\Fields\Text;
 use MoonShine\Fields\Select;
 use MoonShine\Fields\TinyMce;
@@ -60,12 +60,13 @@ class TutorialResource extends ModelResource
                     ->required()
                     ->sortable()
                     ->afterFill(fn($field) => $field->setColumn('tutorial_category_id')),
-                Text::make('Nombre', 'name')
+                Text::make('Título', 'name')
                     ->required()
-                    ->sortable(),
-                Date::make('Fecha', 'date')
-                    ->format('d/m/Y')
-                    ->required(),
+                    ->sortable()
+                    ->unescape(),
+                Text::make('Subtítulo', 'subtitle')
+                    ->required()
+                    ->unescape(),
                 TinyMce::make('Descripción', 'description')
                     ->hideOnIndex()
                     ->required(),
@@ -84,6 +85,6 @@ class TutorialResource extends ModelResource
      */
     public function rules(Model $item): array
     {
-        return [];
+        return ['name' => ['required', 'string', Rule::unique('tutorials')->ignore($item->id)],];
     }
 }

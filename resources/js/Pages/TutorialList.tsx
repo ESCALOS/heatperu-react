@@ -1,7 +1,6 @@
 import Breadcrumb from "@/Components/Breadcrumb";
 import GuestLayout from "@/Layouts/GuestLayout";
 import { Category, Tutorial } from "@/types";
-import { dateFormatter } from "@/utils";
 import LiteYouTubeEmbed from "react-lite-youtube-embed";
 import "react-lite-youtube-embed/dist/LiteYouTubeEmbed.css";
 
@@ -17,22 +16,19 @@ function TutorialList({ category, tutorials }: Props) {
             <div className="container px-4 py-12 mx-auto">
                 <div className="flex flex-wrap justify-center gap-4">
                     {tutorials.map(
-                        ({ id, name, description, date, url_video }) => {
-                            const formattedDate = new Date(date);
+                        ({ id, name, subtitle, description, url_video }) => {
                             return (
                                 <div key={id} className="w-full">
-                                    <div className="p-8 bg-white rounded-lg shadow-md">
-                                        <h2 className="mb-2 text-2xl font-bold">
+                                    <div className="p-8 bg-white rounded-lg shadow-md text-left">
+                                        <h2 className="mb-2 text-2xl md:text-3xl lg:text-4xl font-black uppercase text-primary-500">
                                             {name}
                                         </h2>
-                                        <p className="text-sm font-bold text-primary-500">
-                                            {dateFormatter.format(
-                                                formattedDate
-                                            )}
+                                        <p className="text-md md:text-xl text-2xl font-extrabold uppercase">
+                                            {subtitle}
                                         </p>
                                         {description && (
                                             <div
-                                                className="my-2 commodity-description"
+                                                className="text-sm md:text-base mt-4 mb-2 tutorial-description space-y-2"
                                                 dangerouslySetInnerHTML={{
                                                     __html: description,
                                                 }}

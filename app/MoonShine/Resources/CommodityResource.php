@@ -65,7 +65,9 @@ class CommodityResource extends ModelResource
                 ->nullable()
                 ->multiple(),
             Text::make('SKU', 'sku'),
-            Text::make('Nombre', 'name'),
+            Text::make('Nombre', 'name')
+                ->unescape()
+                ->required(),
             Text::make('Modelo', 'model')->sortable(),
         ];
     }

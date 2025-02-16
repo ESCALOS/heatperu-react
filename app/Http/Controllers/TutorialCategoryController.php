@@ -20,7 +20,6 @@ class TutorialCategoryController extends Controller
         $categoryObj = TutorialCategory::where('slug', $category)->firstOrFail();
 
         $tutorials = $categoryObj->tutorials()
-            ->orderBy('date', 'desc')
             ->get()
             ->map(function ($tutorial) {
                 $tutorial->url_video = $this->extractYouTubeId($tutorial->url_video);

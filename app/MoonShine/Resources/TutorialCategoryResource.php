@@ -34,6 +34,7 @@ class TutorialCategoryResource extends ModelResource
                 ID::make()->sortable(),
                 Text::make('Nombre', 'name')
                     ->sortable()
+                    ->unescape()
                     ->unescape(),
                 SpatieUppyFile::make('Imagen', 'tutorial_categories')
                     ->image(),
